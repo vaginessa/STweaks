@@ -62,7 +62,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	private Boolean kernelSupportOk = false;
 	private Boolean userInterfaceConfigSuccess = false;
 	private Boolean valueChanged = false;
-	private ProgressDialog dialog = null; 
+	private ProgressDialog dialog = null;
 	private String valuesChanged = ""; 
 
 	private boolean getUserInterfaceConfigFromAssets() {
@@ -394,7 +394,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
          	{
          		startTextView.setText(R.string.startmenu_no_root);
          		Utils.reset();
-         	}
+         	}       	
         }
 
     	
@@ -414,7 +414,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 //    	handler.postDelayed(r, 5000);   	
 
     }
-
+    
 	private void createSwipableTabs(final ActionBar actionBar) {
 		// Create the adapter that will return a fragment for each of the three primary sections
         // of the app.
@@ -602,6 +602,20 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
             
     }
 
+    private class DialogCancelling extends AsyncTask<Void, Void, Boolean> {
+		@Override
+		protected Boolean doInBackground(Void... params) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		protected void onPostExecute(Boolean result) {
+        	if (dialog != null && dialog.isShowing())
+        	{
+        		dialog.cancel();
+        		dialog = null;
+        	}
+        }
+    }
     //final AsyncTask<Params, Progress, Result>
     private class LoadDynamicUI extends AsyncTask<Void, Void, Boolean> {
         /** The system calls this to perform work in a worker thread and
@@ -644,11 +658,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         		//initUI(mainLayout);
         		//clearUserSelections(); //apply script values to UI
         	}
-        	if (dialog != null)
-        	{
-        		dialog.cancel();
-        		dialog = null;
-        	}
+        	new DialogCancelling().execute();
         }
 
     }
@@ -679,11 +689,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         		//Toast toast = Toast.makeText(getApplicationContext(), "Some selections failed to apply!", Toast.LENGTH_LONG);
             	//toast.show();  
         	}
-        	if (dialog != null)
-        	{
-        		dialog.cancel();
-        		dialog = null;
-        	}
+        	new DialogCancelling().execute();
         }
     }    
     
