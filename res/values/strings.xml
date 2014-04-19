@@ -5,7 +5,7 @@
     <string name="title_activity_main">STweaks</string>
     <string name="bottom_accept">Apply</string>
     <string name="bottom_decline">Discard</string>
-    <string name="startmenu_initial">Unexpected error!</string>
+    <string name="startmenu_initial"></string>
     <string name="startmenu_nokernelsupport">Sorry, no kernel support!</string>
     <string name="check_for_updates">Check For Updates</string>
     <string name="flash_kernel">Flash Kernel</string>
