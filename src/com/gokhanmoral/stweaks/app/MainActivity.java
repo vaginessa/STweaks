@@ -57,7 +57,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     //==================== Syh UI Elements ================================
     
 	private static String LOG_TAG = MainActivity.class.getName();
-    private static ArrayList<SyhTab> syhTabList = new ArrayList<SyhTab>();    
+    private static ArrayList<SyhTab> syhTabList = new ArrayList<>();
     private Boolean testingWithNoKernelSupport = false;
 	private Boolean kernelSupportOk = false;
 	private Boolean userInterfaceConfigSuccess = false;
@@ -422,7 +422,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
-        mViewPager.setBackgroundColor(Color.BLACK);
+        mViewPager.setBackgroundColor(Color.WHITE);
     	mViewPager.setVisibility(ViewPager.GONE);
         mViewPager.setAdapter(mSectionsPagerAdapter);
         
@@ -555,7 +555,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
        		else
        		{
            		LinearLayout tabContentLayout = new LinearLayout(getActivity());
-           		tabContentLayout.setBackgroundColor(Color.BLACK);
+           		tabContentLayout.setBackgroundColor(Color.WHITE);
            		tabContentLayout.setOrientation(LinearLayout.VERTICAL);
            		tabContentLayout.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 

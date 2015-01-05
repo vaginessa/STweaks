@@ -17,7 +17,7 @@ public class SyhTab {
 	public SyhTab(Context context, Activity activity)
 	{
 		name = "";
-		panes = new ArrayList<SyhPane>();
+		panes = new ArrayList<>();
 		mContext = context;
 		mActivity = activity;
 	}

@@ -76,8 +76,8 @@ public final class SyhSeekBar extends SyhControl implements OnSeekBarChangeListe
 		
         //TODO: Move this to xml
 		seekBarValueText = new TextView(context);
-        seekBarValueText.setTextColor(Color.WHITE);
-        seekBarValueText.setBackgroundColor(Color.BLACK);
+        seekBarValueText.setTextColor(Color.BLACK);
+        seekBarValueText.setBackgroundColor(Color.WHITE);
         seekBarValueText.setText(valueFromUser + " " + unit);
         seekBarValueText.setGravity(Gravity.CENTER);
 		controlLayout.addView(seekBarValueText);        

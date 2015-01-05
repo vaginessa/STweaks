@@ -117,7 +117,7 @@ public abstract class SyhControl {
 		//Control name
 		nameTextView = new TextView(context);
 		//-- nameTextView.setBackgroundColor(Color.BLACK);
-		nameTextView.setTextColor(Color.LTGRAY);
+		nameTextView.setTextColor(Color.BLACK);
 		nameTextView.setText(name.toUpperCase());
 		nameTextView.setTypeface(null, Typeface.BOLD);
 		controlLayout.addView(nameTextView);
@@ -129,7 +129,7 @@ public abstract class SyhControl {
 		//-- descriptionTextView.setBackgroundColor(Color.BLACK);
 		//descriptionTextView.setTextSize(nameTextView.getTextSize()*0.5f);
 		descriptionTextView.setTypeface(Typeface.defaultFromStyle(Typeface.ITALIC), Typeface.ITALIC);
-		descriptionTextView.setTextColor(Color.LTGRAY);
+		descriptionTextView.setTextColor(Color.BLACK);
 		descriptionTextView.setText(description);
 		controlLayout.addView(descriptionTextView);
 		
