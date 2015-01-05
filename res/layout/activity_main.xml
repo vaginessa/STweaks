@@ -25,15 +25,16 @@
 	    android:layout_height="wrap_content"
 	    android:gravity="center"
 	    android:orientation="horizontal"
+        style="?android:attr/buttonBarButtonStyle"
 	    android:paddingTop="2dip">
 	    
 		<Button 
 	        android:id="@+id/AcceptButton"
 	        android:layout_width="0dip"
 	        android:layout_height="match_parent"
-	        android:layout_weight="1"
+            android:layout_weight="1"
+	        style="?android:attr/buttonBarButtonStyle"
 	        android:typeface="serif"
-	        android:textColor="#ffffffff"
 	        android:text="@string/bottom_accept"
 	        />
 	    
@@ -42,8 +43,8 @@
 	        android:layout_width="0dip"
 	        android:layout_height="match_parent"
 	        android:layout_weight="1"
+            style="?android:attr/buttonBarButtonStyle"
 	        android:typeface="serif"
-	        android:textColor="#ffffffff"
 	        android:text="@string/bottom_decline"
 	        /> 
 	</LinearLayout>
