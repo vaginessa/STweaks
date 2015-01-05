@@ -143,7 +143,7 @@ public abstract class SyhControl {
 		
 		TextView paneSeparatorLine = new TextView(context);
 		paneSeparatorLine.setHeight(2);
-        paneSeparatorLine.setBackgroundColor(Color.LTGRAY);
+        paneSeparatorLine.setBackgroundColor(Color.DKGRAY);
         paneSeparatorLine.setText("");
         controlLayout.addView(paneSeparatorLine);  
         

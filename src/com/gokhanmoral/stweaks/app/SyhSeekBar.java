@@ -66,6 +66,7 @@ public final class SyhSeekBar extends SyhControl implements OnSeekBarChangeListe
 		seekbar = new SeekBar(context);
 		seekbar.setMax(maxInSteps);
 		seekbar.setProgress( (val-min) /step);
+        seekbar.setPadding(100, 10, 100, 10);
 		seekbar.setOnSeekBarChangeListener(this); // set listener.
 		
 		//--seekbar.setSecondaryProgress(max/2);//TODO: fix it
