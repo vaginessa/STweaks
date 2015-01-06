@@ -5,7 +5,7 @@
     		  android:id="@+id/MainLayout"
               android:layout_width="fill_parent" 
               android:layout_height="fill_parent" 
-              android:orientation="vertical" 
+              android:orientation="vertical"
               android:background="@color/white" >
               
         <TextView
@@ -51,7 +51,7 @@
 	        /> 
 	</LinearLayout>
 	
-	<android.support.v4.view.ViewPager android:id="@+id/pager"
+	<android.support.v7.view.ViewPager android:id="@+id/pager"
     	android:layout_width="match_parent"
     	android:layout_height="match_parent"
     	android:layout_above="@id/AcceptDeclineLayout"
