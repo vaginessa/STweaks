@@ -29,9 +29,10 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
+
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -422,7 +423,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
-        mViewPager.setBackgroundColor(Color.WHITE);
+        // Test mViewPager.setBackgroundColor(Color.WHITE);
     	mViewPager.setVisibility(ViewPager.GONE);
         mViewPager.setAdapter(mSectionsPagerAdapter);
         
@@ -543,8 +544,8 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		private ScrollView createSyhTab(Integer tabIndex) {
 			ScrollView tabEnclosingLayout = new ScrollView(getActivity());
        		tabEnclosingLayout.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
-       		
-       		
+
+
        		SyhTab tab = syhTabList.get(tabIndex);
        		
        		View  customView = tab.getCustomView(tabEnclosingLayout);
@@ -554,10 +555,11 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
        		}
        		else
        		{
-           		LinearLayout tabContentLayout = new LinearLayout(getActivity());
+                LinearLayout tabContentLayout = new LinearLayout(getActivity());
            		tabContentLayout.setBackgroundColor(Color.WHITE);
            		tabContentLayout.setOrientation(LinearLayout.VERTICAL);
            		tabContentLayout.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+                tabContentLayout.setElevation(16); // Test
 
            		for  (int j = 0; j < tab.panes.size(); j++)
 		        {
@@ -653,6 +655,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     		    createSwipableTabs(actionBar);
     		    actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
     		    //--actionBar.show();
+                actionBar.setElevation(16); // Test
     	    	mViewPager.setVisibility(ViewPager.VISIBLE);
         		        		
         		//initUI(mainLayout);
@@ -687,7 +690,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         	{
                	//TODO: Fix this!
         		//Toast toast = Toast.makeText(getApplicationContext(), "Some selections failed to apply!", Toast.LENGTH_LONG);
-            	//toast.show();  
+            	//toast.show();
         	}
         	new DialogCancelling().execute();
         }

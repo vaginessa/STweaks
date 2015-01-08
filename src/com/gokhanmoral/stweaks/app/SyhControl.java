@@ -36,7 +36,7 @@ public abstract class SyhControl {
 		
 	public boolean isChanged()
 	{
-		boolean changed = (valueFromUser.equals(valueFromScript) == false);
+		boolean changed = !valueFromUser.equals(valueFromScript);
 		return changed;
 	}
 	
@@ -71,7 +71,7 @@ public abstract class SyhControl {
 			{
 				if (!response.isEmpty())
 				{
-					valueFromScript = response.replaceAll("[\n\r]", "");;
+					valueFromScript = response.replaceAll("[\n\r]", "");
 					isOk = true;
 				}
 			}
@@ -129,7 +129,7 @@ public abstract class SyhControl {
 		//-- descriptionTextView.setBackgroundColor(Color.BLACK);
 		//descriptionTextView.setTextSize(nameTextView.getTextSize()*0.5f);
 		descriptionTextView.setTypeface(Typeface.defaultFromStyle(Typeface.ITALIC), Typeface.ITALIC);
-		descriptionTextView.setTextColor(Color.BLACK);
+		// Test descriptionTextView.setTextColor(Color.BLACK);
 		descriptionTextView.setText(description);
 		controlLayout.addView(descriptionTextView);
 		

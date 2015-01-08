@@ -6,7 +6,7 @@ import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.CheckBox;
+import android.widget.Switch;
 
 public class SyhCheckBox extends SyhControl implements OnClickListener{
 
@@ -14,7 +14,7 @@ public class SyhCheckBox extends SyhControl implements OnClickListener{
 		super(activityIn);
 	}
 
-	private CheckBox checkBox;
+	private Switch checkBox;
 	public String label;
 	
 	@Override
@@ -36,7 +36,7 @@ public class SyhCheckBox extends SyhControl implements OnClickListener{
 		//create CheckBox from xml template
 		//View temp = LayoutInflater.from(context).inflate(R.layout.template_checkbox, controlLayout, false);
 		//checkBox = (CheckBox) temp.findViewById(R.id.SyhCheckBox);
-		checkBox = (CheckBox)LayoutInflater.from(context).inflate(R.layout.template_checkbox, controlLayout, false);
+		checkBox = (Switch)LayoutInflater.from(context).inflate(R.layout.template_checkbox, controlLayout, false);
 		checkBox.setText(label);
 		checkBox.setOnClickListener(this);
 		

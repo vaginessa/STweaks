@@ -4,9 +4,7 @@
         android:layout_width="fill_parent"
         android:layout_height="25dp"
 		android:textStyle="bold"
-		android:background="@color/white"
 		android:textColor="@color/dkgray"
-        android:paddingLeft="@dimen/padding_small"
-        android:paddingRight="@dimen/padding_small"
-        android:textSize="18sp"
-    />
+        android:paddingStart="@dimen/padding_small"
+        android:paddingEnd="@dimen/padding_small"
+        android:textSize="18sp" />

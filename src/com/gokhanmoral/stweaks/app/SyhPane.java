@@ -18,8 +18,8 @@ public class SyhPane {
 	public void addPaneToUI(Activity activity, LinearLayout layout)
 	{
 		Context context = activity;
-		
-		TextView paneNameView = new TextView(context);
+
+        TextView paneNameView = new TextView(context);
 		paneNameView = (TextView)LayoutInflater.from(context).inflate(R.layout.template_panelname, layout, false);
 		paneNameView.setText(this.name.toUpperCase());
 		layout.addView(paneNameView); 
