@@ -9,7 +9,7 @@ import android.util.Log;
 
 public class Utils {
 	private static String LOG_TAG = Utils.class.getName();
-	private static String scriptSeparator = "[%nexttweaks%]";
+	static String scriptSeparator = "[%nexttweaks%]";
 
 	private static Process rootProcess = null;
 	private static BufferedWriter consoleIn = null;

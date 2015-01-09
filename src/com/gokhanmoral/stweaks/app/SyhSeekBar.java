@@ -1,9 +1,11 @@
 package com.gokhanmoral.stweaks.app;
 
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.SeekBar.OnSeekBarChangeListener;
@@ -19,7 +21,7 @@ public final class SyhSeekBar extends SyhControl implements OnSeekBarChangeListe
 
 	private SeekBar seekbar;
 	private TextView seekBarValueText;
-	private int maxInSteps;
+	int maxInSteps;
 	
 	public String unit = "";
 	public int min= 0;
@@ -30,7 +32,7 @@ public final class SyhSeekBar extends SyhControl implements OnSeekBarChangeListe
 	
 	//TODO: reverse adjustment needed!
 	//TODO: secondary progress needed!
-	//TODO: Move to XML
+	//DONE: Move to XML
 	
 	@Override
 	public void createInternal() {
@@ -63,12 +65,12 @@ public final class SyhSeekBar extends SyhControl implements OnSeekBarChangeListe
 		
 		//--Log.w(LOG_TAG, " max:" + Integer.toString(max) + " step:" + Integer.toString(step) + " maxInSteps:" + Integer.toString(maxInSteps));
 
-		seekbar = new SeekBar(context);
+        seekbar = new SeekBar(context);
 		seekbar.setMax(maxInSteps);
 		seekbar.setProgress( (val-min) /step);
         seekbar.setPadding(100, 10, 100, 10);
 		seekbar.setOnSeekBarChangeListener(this); // set listener.
-		
+
 		//--seekbar.setSecondaryProgress(max/2);//TODO: fix it
 		
 		applyScriptValueToUserInterface();
@@ -81,8 +83,8 @@ public final class SyhSeekBar extends SyhControl implements OnSeekBarChangeListe
         seekBarValueText.setBackgroundColor(Color.WHITE);
         seekBarValueText.setText(valueFromUser + " " + unit);
         seekBarValueText.setGravity(Gravity.CENTER);
-		controlLayout.addView(seekBarValueText);        
-        
+		controlLayout.addView(seekBarValueText);
+
 	}
 	
 	@Override

@@ -7,7 +7,7 @@
               android:gravity="center"
               android:background="@color/white"
               android:paddingTop="0dip"
-              android:elevation="@dimen/padding_medium">
+              android:elevation="@dimen/size_medium">
               
         <TextView
             android:id="@+id/textViewDevInfo"
@@ -53,8 +53,8 @@
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:paddingTop="10dip"
-        android:paddingStart="@dimen/padding_medium"
-        android:paddingEnd="@dimen/padding_medium"
+        android:paddingStart="@dimen/size_medium"
+        android:paddingEnd="@dimen/size_medium"
         android:layout_margin="10dp"/>
                       	
 </LinearLayout>

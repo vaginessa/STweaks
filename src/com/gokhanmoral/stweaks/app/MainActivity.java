@@ -10,8 +10,6 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
-import com.gokhanmoral.stweaks.app.R;
-
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
@@ -145,7 +143,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	    	SyhPane pane = null;
 	    	SyhSpinner spinner = null;
 	    	SyhSeekBar seekbar = null;
-	    	SyhCheckBox checkbox = null;
+	    	SyhSwitch syhswitch = null;
 	    	SyhButton button = null;
 
 			// process tag while not reaching the end of document
@@ -175,20 +173,20 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 					    	pane.description =parser.getAttributeValue(null, "description");
 					    	pane.name = parser.getAttributeValue(null, "name");
 						}
-						// if <checkbox>
-						else if(tagName.equalsIgnoreCase("checkbox")) {
-							//Log.w("parseUIFromXml", "checkbox name = " + parser.getAttributeValue(null, "name"));
-							//Log.w("parseUIFromXml", "checkbox description = " + parser.getAttributeValue(null, "description"));
-							//Log.w("parseUIFromXml", "checkbox action = " + parser.getAttributeValue(null, "action"));
-							//Log.w("parseUIFromXml", "checkbox label = " + parser.getAttributeValue(null, "label"));
+						// if <syhswitch>
+						else if(tagName.equalsIgnoreCase("syhswitch")) {
+							//Log.w("parseUIFromXml", "syhswitch name = " + parser.getAttributeValue(null, "name"));
+							//Log.w("parseUIFromXml", "syhswitch description = " + parser.getAttributeValue(null, "description"));
+							//Log.w("parseUIFromXml", "syhswitch action = " + parser.getAttributeValue(null, "action"));
+							//Log.w("parseUIFromXml", "syhswitch label = " + parser.getAttributeValue(null, "label"));
 							if (pane != null)
 							{
-							   	checkbox = new SyhCheckBox(this);
-						    	checkbox.name = parser.getAttributeValue(null, "name");
-						    	checkbox.description = parser.getAttributeValue(null, "description");
-						    	checkbox.action =parser.getAttributeValue(null, "action");
-						    	checkbox.label = parser.getAttributeValue(null, "label");
-						    	pane.controls.add(checkbox);								
+							   	syhswitch = new SyhSwitch(this);
+						    	syhswitch.name = parser.getAttributeValue(null, "name");
+						    	syhswitch.description = parser.getAttributeValue(null, "description");
+						    	syhswitch.action =parser.getAttributeValue(null, "action");
+						    	syhswitch.label = parser.getAttributeValue(null, "label");
+						    	pane.controls.add(syhswitch);
 							}
 						}
 						else if(tagName.equalsIgnoreCase("spinner")) {
@@ -578,30 +576,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			return tabEnclosingLayout;
 		}
 
-        @Override
-        public void onDestroyView (){
-        	super.onDestroyView();
-        	//-- Log.i(LOG_TAG, "onDestroyView mTabIndex:" + mTabIndex); 
-        }
-        
-        @Override
-        public void onDetach(){
-        	super.onDetach();
-        	//-- Log.i(LOG_TAG, "onDetach mTabIndex:" + mTabIndex); 
-        }
-        
-        @Override
-        public void onStop(){
-        	super.onStop();
-        	//-- Log.i(LOG_TAG, "onStop mTabIndex:" + mTabIndex); 
-        }
-        
-        @Override
-        public void onPause(){
-        	super.onPause();
-        	//-- Log.i(LOG_TAG, "onPause mTabIndex:" + mTabIndex); 
-        }
-            
     }
 
     private class DialogCancelling extends AsyncTask<Void, Void, Boolean> {

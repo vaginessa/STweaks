@@ -5,6 +5,7 @@
         android:layout_height="25dp"
 		android:textStyle="bold"
 		android:textColor="@color/dkgray"
-        android:paddingStart="@dimen/padding_small"
-        android:paddingEnd="@dimen/padding_small"
+        android:paddingStart="@dimen/size_small"
+        android:paddingEnd="@dimen/size_small"
+        android:paddingTop="@dimen/size_small"
         android:textSize="18sp" />

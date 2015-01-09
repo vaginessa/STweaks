@@ -16,7 +16,7 @@ public class SyhButton extends SyhControl implements OnClickListener{
 		canGetValueFromScript = false;
 	}
 	
-	private Button button;
+	Button button;
 	public String label;
 
 	@Override

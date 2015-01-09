@@ -25,8 +25,8 @@ public final class SyhSpinner extends SyhControl implements OnItemSelectedListen
 	}
 
 	private Spinner spnnr = null;
-	private List<String> nameList = new ArrayList<String>();
-	private List<String> valueList = new ArrayList<String>();
+	private List<String> nameList = new ArrayList<>();
+	private List<String> valueList = new ArrayList<>();
 	
 	private int findValueInValueList(String value)
 	{
@@ -93,7 +93,7 @@ public final class SyhSpinner extends SyhControl implements OnItemSelectedListen
 		
 		spnnr = (Spinner) LayoutInflater.from(context).inflate(R.layout.template_spinner, controlLayout, false);
 
-		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(context, R.layout.template_spinner_item, nameList); //custom spinner
+		ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(context, R.layout.template_spinner_item, nameList); //custom spinner
 		//-- ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, nameList);
 		//-- CustomArrayAdapter<String> dataAdapter = new CustomArrayAdapter<String>(context, nameList);
 		

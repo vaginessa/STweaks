@@ -1,0 +1,15 @@
+
+<Switch  xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/SyhSwitch"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="@string/title_activity_main"
+        android:checked="false"
+        android:layout_marginStart="@dimen/size_large"
+        android:layout_marginEnd="@dimen/size_large"
+        android:layout_marginBottom="@dimen/size_small"
+        android:layout_marginTop="@dimen/size_small"/>
+
+
+    

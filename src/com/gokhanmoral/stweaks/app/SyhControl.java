@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
@@ -24,8 +25,8 @@ public abstract class SyhControl {
 	protected Activity activity;
 	protected Context context;
 	protected LinearLayout controlLayout;
-	private TextView nameTextView;
-	private TextView descriptionTextView;
+	TextView nameTextView;
+	TextView descriptionTextView;
 	
 	protected SyhControl(Activity activityIn)
 	{
@@ -113,26 +114,38 @@ public abstract class SyhControl {
 		controlLayout.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 		controlLayout.setPadding(30, 5, 30, 5);
 		
-        //TODO: Move this to xml
+        //DONE: Move this to xml
 		//Control name
-		nameTextView = new TextView(context);
+		//nameTextView = new TextView(context);
 		//-- nameTextView.setBackgroundColor(Color.BLACK);
-		nameTextView.setTextColor(Color.BLACK);
-		nameTextView.setText(name.toUpperCase());
-		nameTextView.setTypeface(null, Typeface.BOLD);
-		controlLayout.addView(nameTextView);
+		//nameTextView.setTextColor(Color.BLACK);
+		//nameTextView.setText(name.toUpperCase());
+		//nameTextView.setTypeface(null, Typeface.BOLD);
+		//controlLayout.addView(nameTextView);
 		
-		//TODO: Move this to xml
+		//DONE: Move this to xml
 		//Control description
-		descriptionTextView = new TextView(context);
-		descriptionTextView.setPadding(15, 5, 0, 0);
+		//descriptionTextView = new TextView(context);
+		//descriptionTextView.setPadding(15, 5, 0, 0);
 		//-- descriptionTextView.setBackgroundColor(Color.BLACK);
 		//descriptionTextView.setTextSize(nameTextView.getTextSize()*0.5f);
-		descriptionTextView.setTypeface(Typeface.defaultFromStyle(Typeface.ITALIC), Typeface.ITALIC);
-		// Test descriptionTextView.setTextColor(Color.BLACK);
-		descriptionTextView.setText(description);
-		controlLayout.addView(descriptionTextView);
-		
+		//descriptionTextView.setTypeface(Typeface.defaultFromStyle(Typeface.ITALIC), Typeface.ITALIC);
+		//descriptionTextView.setTextColor(Color.BLACK);
+		//descriptionTextView.setText(description);
+		//controlLayout.addView(descriptionTextView);
+
+        //Control Name
+        TextView nameTextView = new TextView(context);
+        nameTextView = (TextView) LayoutInflater.from(context).inflate(R.layout.template_textname, controlLayout, false);
+        nameTextView.setText(name.toUpperCase());
+        controlLayout.addView(nameTextView);
+
+        //Control description
+        TextView descriptionTextView = new TextView(context);
+        descriptionTextView = (TextView)LayoutInflater.from(context).inflate(R.layout.template_textdesc, controlLayout, false);
+        descriptionTextView.setText(description);
+        controlLayout.addView(descriptionTextView);
+
 		createInternal();
 		
 		TextView paneSeparatorBlank = new TextView(context);

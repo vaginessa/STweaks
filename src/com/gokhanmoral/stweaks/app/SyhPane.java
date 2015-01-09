@@ -13,7 +13,7 @@ public class SyhPane {
 	public String description;
 	public String name;
 	
-	public List<SyhControl> controls = new ArrayList<SyhControl>(); 
+	public List<SyhControl> controls = new ArrayList<>();
 	
 	public void addPaneToUI(Activity activity, LinearLayout layout)
 	{
@@ -29,7 +29,6 @@ public class SyhPane {
 	        TextView paneDescriptionView = new TextView(context);
 	        paneDescriptionView = (TextView)LayoutInflater.from(context).inflate(R.layout.template_paneldesc, layout, false);
 	        paneDescriptionView.setText(this.description);
-	        paneDescriptionView.setPadding(0, 5, 0, 10);
 	        layout.addView(paneDescriptionView);  
 		}	
 	}

@@ -1,3 +1,11 @@
-\bin
-\gen
-\proguard
+bin/
+gen/
+local.properties
+.gradle/
+.idea/
+build/
+*.log
+*.swp
+*.orig
+*.keystore
+*.directory

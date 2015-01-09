@@ -4,9 +4,6 @@
 	<color name="dkgray">#ff444444</color>
     <color name="black">#000000</color>
     <color name="white">#ffffffff</color>
-    <color name="blue">#0000FF</color>
-    <color name="dkblue">#00008B</color>
-    <color name="mdblue">#0000CD</color>
     <color name="cmdkgray">#21272b</color>
     <color name="cmgray">#263238</color>
 </resources>

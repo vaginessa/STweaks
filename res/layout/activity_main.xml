@@ -24,10 +24,10 @@
 	    android:gravity="center"
 	    android:orientation="horizontal"
         android:background="@color/white"
-        android:layout_marginStart="@dimen/padding_small"
-        android:layout_marginEnd="@dimen/padding_small"
-        android:layout_marginBottom="@dimen/padding_medium"
-        android:elevation="@dimen/padding_large">
+        android:layout_marginStart="@dimen/size_small"
+        android:layout_marginEnd="@dimen/size_small"
+        android:layout_marginBottom="@dimen/size_medium"
+        android:elevation="@dimen/size_large">
 
 		<Button
             style="?android:attr/buttonBarPositiveButtonStyle"
@@ -35,7 +35,7 @@
 	        android:layout_width="0dip"
 	        android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_margin="@dimen/padding_small"
+            android:layout_margin="@dimen/size_small"
             android:textSize="18sp"
             android:textStyle="bold"
 	        android:text="@string/bottom_accept"
@@ -47,7 +47,7 @@
 	        android:layout_width="0dip"
 	        android:layout_height="match_parent"
 	        android:layout_weight="1"
-            android:layout_margin="@dimen/padding_small"
+            android:layout_margin="@dimen/size_small"
             android:textSize="18sp"
             android:textStyle="bold"
 	        android:text="@string/bottom_decline"
