@@ -174,7 +174,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 					    	pane.name = parser.getAttributeValue(null, "name");
 						}
 						// if <syhswitch>
-						else if(tagName.equalsIgnoreCase("syhswitch")) {
+						else if(tagName.equalsIgnoreCase("checkbox")) {
 							//Log.w("parseUIFromXml", "syhswitch name = " + parser.getAttributeValue(null, "name"));
 							//Log.w("parseUIFromXml", "syhswitch description = " + parser.getAttributeValue(null, "description"));
 							//Log.w("parseUIFromXml", "syhswitch action = " + parser.getAttributeValue(null, "action"));
@@ -540,9 +540,10 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         }
 
 		private ScrollView createSyhTab(Integer tabIndex) {
-			ScrollView tabEnclosingLayout = new ScrollView(getActivity());
-       		tabEnclosingLayout.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+			//ScrollView tabEnclosingLayout = new ScrollView(getActivity());
+       		//tabEnclosingLayout.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 
+            ScrollView tabEnclosingLayout = (ScrollView) LayoutInflater.from(getActivity()).inflate(R.layout.template_tab_scrollview, null);
 
        		SyhTab tab = syhTabList.get(tabIndex);
        		
@@ -553,13 +554,16 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
        		}
        		else
        		{
-                LinearLayout tabContentLayout = new LinearLayout(getActivity());
-           		tabContentLayout.setBackgroundColor(Color.WHITE);
-           		tabContentLayout.setOrientation(LinearLayout.VERTICAL);
-           		tabContentLayout.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
-                tabContentLayout.setElevation(16); // Test
+                //Moved to xml
+                //LinearLayout tabContentLayout = new LinearLayout(getActivity());
+           		//tabContentLayout.setBackgroundColor(Color.WHITE);
+           		//tabContentLayout.setOrientation(LinearLayout.VERTICAL);
+           		//tabContentLayout.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+                //tabContentLayout.setElevation(16); // Test
 
-           		for  (int j = 0; j < tab.panes.size(); j++)
+                LinearLayout tabContentLayout = (LinearLayout) LayoutInflater.from(getActivity()).inflate(R.layout.template_content_layout, null);
+
+                for  (int j = 0; j < tab.panes.size(); j++)
 		        {
 		        	SyhPane pane = tab.panes.get(j);
 		        	pane.addPaneToUI(getActivity(), tabContentLayout);
@@ -660,7 +664,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
            	Toast toast1 = Toast.makeText(getApplicationContext(), valuesChanged, Toast.LENGTH_LONG);
         	toast1.show();  
 
-        	if (result == false)
+        	if (!result)
         	{
                	//TODO: Fix this!
         		//Toast toast = Toast.makeText(getApplicationContext(), "Some selections failed to apply!", Toast.LENGTH_LONG);

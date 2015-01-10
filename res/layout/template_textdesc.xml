@@ -5,6 +5,7 @@
     android:paddingStart="@dimen/size_small"
     android:paddingEnd="0dp"
     android:paddingTop="8dp"
-    android:textStyle="italic">
+    android:textStyle="italic"
+    android:textColor="@color/black">
 
 </TextView>

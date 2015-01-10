@@ -94,7 +94,7 @@ public class Utils {
 				} else if (consoleError.ready()) {
 					line = consoleError.readLine() + "\r\n";
 					Log.d(LOG_TAG, "--> Error received: " + line);
-					if (line != null)
+					if (true)
 						finished = true;
 				} else {
 					if (startTime == 0) {

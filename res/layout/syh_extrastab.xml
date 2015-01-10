@@ -7,6 +7,10 @@
               android:gravity="center"
               android:background="@color/white"
               android:paddingTop="0dip"
+              android:layout_marginStart="@dimen/size_medium"
+              android:layout_marginTop="@dimen/size_large"
+              android:layout_marginEnd="@dimen/size_medium"
+              android:layout_marginBottom="@dimen/size_large"
               android:elevation="@dimen/size_medium">
               
         <TextView

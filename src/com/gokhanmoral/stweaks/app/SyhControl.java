@@ -108,12 +108,16 @@ public abstract class SyhControl {
 */
 		
 		valueFromUser = valueFromScript; //prevent value changed event!!!
-		
-		controlLayout = new LinearLayout(context);
-		controlLayout.setOrientation(LinearLayout.VERTICAL);
-		controlLayout.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
-		controlLayout.setPadding(30, 5, 30, 5);
-		
+
+        //Moved to xml
+		//controlLayout = new LinearLayout(context);
+		//controlLayout.setOrientation(LinearLayout.VERTICAL);
+		//controlLayout.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+		//controlLayout.setPadding(30, 5, 30, 5);
+
+        controlLayout = new LinearLayout(context);
+        controlLayout = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.template_control_layout, controlLayout, false);
+
         //DONE: Move this to xml
 		//Control name
 		//nameTextView = new TextView(context);
@@ -135,13 +139,11 @@ public abstract class SyhControl {
 		//controlLayout.addView(descriptionTextView);
 
         //Control Name
-        TextView nameTextView = new TextView(context);
         nameTextView = (TextView) LayoutInflater.from(context).inflate(R.layout.template_textname, controlLayout, false);
         nameTextView.setText(name.toUpperCase());
         controlLayout.addView(nameTextView);
 
         //Control description
-        TextView descriptionTextView = new TextView(context);
         descriptionTextView = (TextView)LayoutInflater.from(context).inflate(R.layout.template_textdesc, controlLayout, false);
         descriptionTextView.setText(description);
         controlLayout.addView(descriptionTextView);

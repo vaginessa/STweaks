@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SeekBar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="50dp"
+    android:paddingTop="@dimen/size_medium"
+    android:paddingEnd="50dp"
+    android:paddingBottom="@dimen/size_medium">
+
+</SeekBar>

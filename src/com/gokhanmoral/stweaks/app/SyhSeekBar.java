@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.SeekBar.OnSeekBarChangeListener;
@@ -65,11 +66,17 @@ public final class SyhSeekBar extends SyhControl implements OnSeekBarChangeListe
 		
 		//--Log.w(LOG_TAG, " max:" + Integer.toString(max) + " step:" + Integer.toString(step) + " maxInSteps:" + Integer.toString(maxInSteps));
 
-        seekbar = new SeekBar(context);
-		seekbar.setMax(maxInSteps);
-		seekbar.setProgress( (val-min) /step);
-        seekbar.setPadding(100, 10, 100, 10);
-		seekbar.setOnSeekBarChangeListener(this); // set listener.
+		// Moved to xml
+        //seekbar = new SeekBar(context);
+		//seekbar.setMax(maxInSteps);
+		//seekbar.setProgress( (val-min) /step);
+        //seekbar.setPadding(100, 10, 100, 10);
+		//seekbar.setOnSeekBarChangeListener(this); // set listener.
+
+        seekbar = (SeekBar) LayoutInflater.from(context).inflate(R.layout.template_seekbar, controlLayout, false);
+        seekbar.setMax(maxInSteps);
+        seekbar.setProgress( (val-min) /step);
+        seekbar.setOnSeekBarChangeListener(this); // set listener.
 
 		//--seekbar.setSecondaryProgress(max/2);//TODO: fix it
 		
@@ -77,13 +84,17 @@ public final class SyhSeekBar extends SyhControl implements OnSeekBarChangeListe
 		
 		controlLayout.addView(seekbar);
 		
-        //TODO: Move this to xml
-		seekBarValueText = new TextView(context);
-        seekBarValueText.setTextColor(Color.BLACK);
-        seekBarValueText.setBackgroundColor(Color.WHITE);
+        //DONE: Move this to xml
+		//seekBarValueText = new TextView(context);
+        //seekBarValueText.setTextColor(Color.BLACK);
+        //seekBarValueText.setBackgroundColor(Color.WHITE);
+        //seekBarValueText.setText(valueFromUser + " " + unit);
+        //seekBarValueText.setGravity(Gravity.CENTER);
+		//controlLayout.addView(seekBarValueText);
+
+        seekBarValueText = (TextView) LayoutInflater.from(context).inflate(R.layout.template_seekbar_text, controlLayout, false);
         seekBarValueText.setText(valueFromUser + " " + unit);
-        seekBarValueText.setGravity(Gravity.CENTER);
-		controlLayout.addView(seekBarValueText);
+        controlLayout.addView(seekBarValueText);
 
 	}
 	
@@ -121,7 +132,7 @@ public final class SyhSeekBar extends SyhControl implements OnSeekBarChangeListe
 			}
 			catch (NumberFormatException nfe)
 			{
-				
+				// Do Nothing
 			}
 			Integer progress = (valueHardwareInt - min) / step;
 			seekbar.setProgress(progress);
