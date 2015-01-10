@@ -1,5 +1,5 @@
 package com.gokhanmoral.stweaks.app;
 
-public interface SyhValueChangedInterface {
+interface SyhValueChangedInterface {
 	void valueChanged();
 }

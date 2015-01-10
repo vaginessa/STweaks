@@ -5,7 +5,7 @@
               android:layout_height="fill_parent" 
               android:orientation="vertical"
               android:gravity="center"
-              android:background="@color/white"
+              android:background="@color/cmwhite"
               android:paddingTop="0dip"
               android:layout_marginStart="@dimen/size_medium"
               android:layout_marginTop="@dimen/size_large"
@@ -28,7 +28,7 @@
         android:layout_height="30dp"
         android:textColor="@color/black"
         android:textStyle="italic"
-        android:background="@color/white"
+        android:background="@color/cmwhite"
         android:gravity="center"/>
                 
        	<Button 

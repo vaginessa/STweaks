@@ -8,7 +8,7 @@ import android.widget.Switch;
 
 public class SyhSwitch extends SyhControl implements OnClickListener{
 
-	protected SyhSwitch(Activity activityIn) {
+	SyhSwitch(Activity activityIn) {
 		super(activityIn);
 	}
 
@@ -48,12 +48,12 @@ public class SyhSwitch extends SyhControl implements OnClickListener{
 		valueFromUser = valueFromScript;
 	}
 
-	protected Boolean convertFromScriptFormatToControlFormat(String input) {
+	Boolean convertFromScriptFormatToControlFormat(String input) {
 		boolean hardware = input.equals("on");
 		return hardware;
 	}
 
-	protected String convertFromControlFormatToScriptFormat(Boolean input) {
+	String convertFromControlFormatToScriptFormat(Boolean input) {
 		String scriptVal = (input) ? ("on"): ("off");
 		return scriptVal;
 	}

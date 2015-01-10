@@ -3,34 +3,28 @@ package com.gokhanmoral.stweaks.app;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public abstract class SyhControl {
+abstract class SyhControl {
 	public String description = "";
 	public String name = "";
 	public String action = "";
-	public String valueFromScript = "0"; 	//loaded from the kernel script (integer, float, "on"/"off"...)
-	public String valueFromUser = "0";    	//user input to be applied to the kernel script (integer, float, "on"/"off"...)
+	String valueFromScript = "0"; 	//loaded from the kernel script (integer, float, "on"/"off"...)
+	String valueFromUser = "0";    	//user input to be applied to the kernel script (integer, float, "on"/"off"...)
 	public View view;
-	protected Boolean canGetValueFromScript = true;
-	protected String syh_command = "/res/uci.sh "; 
+	Boolean canGetValueFromScript = true;
+	private final String syh_command = "/res/uci.sh ";
 
-	protected SyhValueChangedInterface vci; //interface to inform main activity about changed values
-	protected Activity activity;
-	protected Context context;
-	protected LinearLayout controlLayout;
-	TextView nameTextView;
-	TextView descriptionTextView;
-	
-	protected SyhControl(Activity activityIn)
+	final SyhValueChangedInterface vci; //interface to inform main activity about changed values
+    final Context context;
+	LinearLayout controlLayout;
+
+    SyhControl(Activity activityIn)
 	{
-		activity = activityIn;
 		context = activityIn;
 		vci = (SyhValueChangedInterface) activityIn;
 	}
@@ -52,7 +46,7 @@ public abstract class SyhControl {
 	}
 	
 	// get the value from kernel script - user interface NOT CHANGED! 
-	public boolean getValueViaScript(boolean optimized) 
+	public boolean getValueViaScript(boolean optimized)
 	{
 		boolean isOk = false;
 		
@@ -139,12 +133,12 @@ public abstract class SyhControl {
 		//controlLayout.addView(descriptionTextView);
 
         //Control Name
-        nameTextView = (TextView) LayoutInflater.from(context).inflate(R.layout.template_textname, controlLayout, false);
+        TextView nameTextView = (TextView) LayoutInflater.from(context).inflate(R.layout.template_textname, controlLayout, false);
         nameTextView.setText(name.toUpperCase());
         controlLayout.addView(nameTextView);
 
         //Control description
-        descriptionTextView = (TextView)LayoutInflater.from(context).inflate(R.layout.template_textdesc, controlLayout, false);
+        TextView descriptionTextView = (TextView) LayoutInflater.from(context).inflate(R.layout.template_textdesc, controlLayout, false);
         descriptionTextView.setText(description);
         controlLayout.addView(descriptionTextView);
 

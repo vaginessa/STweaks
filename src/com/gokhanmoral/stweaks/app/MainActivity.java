@@ -13,7 +13,7 @@ import org.xmlpull.v1.XmlPullParserFactory;
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
-import android.graphics.Color;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -30,7 +30,6 @@ import android.view.ViewGroup;
 
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,25 +38,17 @@ import android.widget.Toast;
 //TODO: flash kernel/zip
 
 public class MainActivity extends FragmentActivity implements ActionBar.TabListener, SyhValueChangedInterface, OnClickListener{
-	
-	/**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide fragments for each of the
-     * sections. We use a {@link android.support.v4.app.FragmentPagerAdapter} derivative, which will
-     * keep every loaded fragment in memory. If this becomes too memory intensive, it may be best
-     * to switch to a {@link android.support.v4.app.FragmentStatePagerAdapter}.
-     */
-    SectionsPagerAdapter mSectionsPagerAdapter;
 
     /**
      * The {@link ViewPager} that will host the section contents.
      */
-    ViewPager mViewPager;
+    private static ViewPager mViewPager;
     
     //==================== Syh UI Elements ================================
     
-	private static String LOG_TAG = MainActivity.class.getName();
-    private static ArrayList<SyhTab> syhTabList = new ArrayList<>();
-    private Boolean testingWithNoKernelSupport = false;
+	private static final String LOG_TAG = MainActivity.class.getName();
+    private static final ArrayList<SyhTab> syhTabList = new ArrayList<>();
+    private final Boolean testingWithNoKernelSupport = false;
 	private Boolean kernelSupportOk = false;
 	private Boolean userInterfaceConfigSuccess = false;
 	private Boolean valueChanged = false;
@@ -97,7 +88,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	
 	private void addSpecialTabs()
 	{
-		SyhExtrasTab it = new SyhExtrasTab(this, this);
+		SyhExtrasTab it = new SyhExtrasTab(this);
 		
 		syhTabList.add(it);
 	}
@@ -126,7 +117,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		return isOk;
 	}
 	
-	public boolean parseUIFromXml(InputStream is)
+	boolean parseUIFromXml(InputStream is)
 	{
 		Boolean isOk = true;
 		syhTabList.clear();
@@ -142,9 +133,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	    	SyhTab tab = null;
 	    	SyhPane pane = null;
 	    	SyhSpinner spinner = null;
-	    	SyhSeekBar seekbar = null;
-	    	SyhSwitch syhswitch = null;
-	    	SyhButton button = null;
+	    	SyhSeekBar seekbar;
+	    	SyhSwitch syhswitch;
+	    	SyhButton button;
 
 			// process tag while not reaching the end of document
 			while(eventType != XmlPullParser.END_DOCUMENT) {
@@ -162,7 +153,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 						// if <settingsTab>, get attribute: 'name'
 						if(tagName.equalsIgnoreCase("settingsTab")) {
 							//Log.w("parseUIFromXml", "settingsTab name = " + parser.getAttributeValue(null, "name"));
-							tab = new SyhTab(this, this);
+							tab = new SyhTab(this);
 							tab.name = parser.getAttributeValue(null, "name");
 						}
 						// if <settingsPane>, get attribute: 'name' and 'description'
@@ -361,6 +352,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         // Set up the action bar.
         final ActionBar actionBar = getActionBar();
         //-- actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        assert actionBar != null;
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD); //hide "only tabs" in action bar
 		//-- createSyhUI(actionBar);
     	
@@ -417,7 +409,13 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	private void createSwipableTabs(final ActionBar actionBar) {
 		// Create the adapter that will return a fragment for each of the three primary sections
         // of the app.
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        /*
+      The {@link android.support.v4.view.PagerAdapter} that will provide fragments for each of the
+      sections. We use a {@link android.support.v4.app.FragmentPagerAdapter} derivative, which will
+      keep every loaded fragment in memory. If this becomes too memory intensive, it may be best
+      to switch to a {@link android.support.v4.app.FragmentStatePagerAdapter}.
+     */
+        SectionsPagerAdapter mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
@@ -543,7 +541,8 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			//ScrollView tabEnclosingLayout = new ScrollView(getActivity());
        		//tabEnclosingLayout.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 
-            ScrollView tabEnclosingLayout = (ScrollView) LayoutInflater.from(getActivity()).inflate(R.layout.template_tab_scrollview, null);
+            Context ctx = getActivity();
+            ScrollView tabEnclosingLayout = (ScrollView) LayoutInflater.from(ctx).inflate(R.layout.template_tab_scrollview,mViewPager, false);
 
        		SyhTab tab = syhTabList.get(tabIndex);
        		
@@ -561,7 +560,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
            		//tabContentLayout.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
                 //tabContentLayout.setElevation(16); // Test
 
-                LinearLayout tabContentLayout = (LinearLayout) LayoutInflater.from(getActivity()).inflate(R.layout.template_content_layout, null);
+                LinearLayout tabContentLayout = (LinearLayout) LayoutInflater.from(ctx).inflate(R.layout.template_content_layout, mViewPager, false);
 
                 for  (int j = 0; j < tab.panes.size(); j++)
 		        {
@@ -631,7 +630,8 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     	        
     		    final ActionBar actionBar = getActionBar();
     		    createSwipableTabs(actionBar);
-    		    actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+                assert actionBar != null;
+                actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
     		    //--actionBar.show();
                 actionBar.setElevation(16); // Test
     	    	mViewPager.setVisibility(ViewPager.VISIBLE);

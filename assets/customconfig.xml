@@ -1,7 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
 <settingsRoot>
   <settingsTab name="GPU">
     <settingsPane description="" name="GPU scaling settings">
-      <spinner description="Set the maximum freqency the GPU scales up to." name="GPU max frequency" 
+      <spinner description="Set the maximum frequency the GPU scales up to." name="GPU max frequency"
                action="generic /sys/devices/system/gpu/max_freq">
         <spinnerItem name="54 MHz" value="54"/>
         <spinnerItem name="108 MHz" value="108"/>
@@ -15,7 +16,7 @@
         <spinnerItem name="800 MHz" value="800"/>
 
       </spinner>
-      <spinner description="Set the minimum freqency the GPU scales up to." name="GPU min frequency" 
+      <spinner description="Set the minimum frequency the GPU scales up to." name="GPU min frequency"
                action="generic /sys/devices/system/gpu/max_freq">
         <spinnerItem name="54 MHz" value="54"/>
         <spinnerItem name="108 MHz" value="108"/>

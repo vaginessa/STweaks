@@ -1,30 +1,25 @@
 package com.gokhanmoral.stweaks.app;
 
 import android.app.Activity;
-import android.content.Context;
-import android.graphics.Color;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 
 public final class SyhSeekBar extends SyhControl implements OnSeekBarChangeListener{
 
-	private static String LOG_TAG = Utils.class.getName();
+	private static final String LOG_TAG = Utils.class.getName();
 
 
-	protected SyhSeekBar(Activity activityIn) {
+	SyhSeekBar(Activity activityIn) {
 		super(activityIn);
 	}
 
 	private SeekBar seekbar;
 	private TextView seekBarValueText;
-	int maxInSteps;
-	
-	public String unit = "";
+
+    public String unit = "";
 	public int min= 0;
 	public int max = 0;
 	public int step = 1;
@@ -61,8 +56,8 @@ public final class SyhSeekBar extends SyhControl implements OnSeekBarChangeListe
 			valueFromScript = Integer.toString(max);
 		}
 		valueFromUser = valueFromScript;
-		
-		maxInSteps = (max - min)/ step;
+
+        int maxInSteps = (max - min) / step;
 		
 		//--Log.w(LOG_TAG, " max:" + Integer.toString(max) + " step:" + Integer.toString(step) + " maxInSteps:" + Integer.toString(maxInSteps));
 

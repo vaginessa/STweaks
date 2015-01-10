@@ -25,8 +25,8 @@ public final class SyhSpinner extends SyhControl implements OnItemSelectedListen
 	}
 
 	private Spinner spnnr = null;
-	private List<String> nameList = new ArrayList<>();
-	private List<String> valueList = new ArrayList<>();
+	private final List<String> nameList = new ArrayList<>();
+	private final List<String> valueList = new ArrayList<>();
 	
 	private int findValueInValueList(String value)
 	{
@@ -111,12 +111,12 @@ public final class SyhSpinner extends SyhControl implements OnItemSelectedListen
 		nameList.add(name);
 		valueList.add(value);
 	}
-	
-	public void clearNameAndValues(){
-		nameList.clear();
-		valueList.clear();
-	}
-	
+
+//	public void clearNameAndValues(){
+//		nameList.clear();
+//		valueList.clear();
+//	}
+
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View view, 
             int pos, long id) 
@@ -136,7 +136,7 @@ public final class SyhSpinner extends SyhControl implements OnItemSelectedListen
 		// TODO Auto-generated method stub
 	}
 	
-	static class CustomArrayAdapter<T> extends ArrayAdapter<T>
+	private static class CustomArrayAdapter<T> extends ArrayAdapter<T>
 	{
 	    public CustomArrayAdapter(Context ctx, List<T> objects)
 	    {

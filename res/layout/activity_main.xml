@@ -23,7 +23,7 @@
 	    android:layout_height="65dp"
 	    android:gravity="center"
 	    android:orientation="horizontal"
-        android:background="@color/white"
+        android:background="@color/cmwhite"
         android:layout_marginStart="@dimen/size_small"
         android:layout_marginEnd="@dimen/size_small"
         android:layout_marginBottom="@dimen/size_medium"

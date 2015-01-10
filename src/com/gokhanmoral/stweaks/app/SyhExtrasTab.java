@@ -1,8 +1,5 @@
 package com.gokhanmoral.stweaks.app;
 
-import com.gokhanmoral.stweaks.app.R;
-
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -16,8 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class SyhExtrasTab extends SyhTab implements OnClickListener {
-     public SyhExtrasTab(Context context, Activity activity) {
-		super(context, activity);
+     public SyhExtrasTab(Context context) {
+		super(context);
 		this.name = "Extras";
 	}
 

@@ -7,9 +7,9 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import android.util.Log;
 
-public class Utils {
-	private static String LOG_TAG = Utils.class.getName();
-	static String scriptSeparator = "[%nexttweaks%]";
+class Utils {
+	private static final String LOG_TAG = Utils.class.getName();
+	private static final String scriptSeparator = "[%nexttweaks%]";
 
 	private static Process rootProcess = null;
 	private static BufferedWriter consoleIn = null;
@@ -38,12 +38,9 @@ public class Utils {
 	}
 
 	private static Boolean isUtilsInitilized() {
-		if (rootProcess == null || consoleIn == null || consoleOut == null
-				|| consoleError == null) {
-			return false;
-		}
-		return true;
-	}
+        return !(rootProcess == null || consoleIn == null || consoleOut == null
+                || consoleError == null);
+    }
 
 	public static void reset() {
 		if (rootProcess != null) {
@@ -61,14 +58,14 @@ public class Utils {
 
 	public static boolean canRunRootCommandsInThread() {
 		boolean isOk = false;
-		String line = "";
+		String line;
 		final String echoStr = "suPermsOk";
 
 		Log.d(LOG_TAG, "=== canRunRootCommands ===");
 
-		if (isUtilsInitilized() == false) {
+		if (!isUtilsInitilized()) {
 			initializeUtils();
-			if (isUtilsInitilized() == false) {
+			if (!isUtilsInitilized()) {
 				return false;
 			}
 		}
@@ -94,15 +91,15 @@ public class Utils {
 				} else if (consoleError.ready()) {
 					line = consoleError.readLine() + "\r\n";
 					Log.d(LOG_TAG, "--> Error received: " + line);
-					if (true)
-						finished = true;
+                    finished = true;
 				} else {
 					if (startTime == 0) {
 						startTime = System.currentTimeMillis();
 
 						try {
 							Thread.sleep(1);
-						} catch (InterruptedException e) {
+						} catch (InterruptedException ignored) {
+                            // Do nothing
 						}
 					} else if (System.currentTimeMillis() > startTime + timeout) {
 						finished = true;
@@ -125,12 +122,12 @@ public class Utils {
 		Log.i(LOG_TAG, "[Running command:" + command + "]");
 
 		String consoleOutStr = "";
-		String line = "";
-		String lineErr = "";
+		String line;
+		String lineErr;
 
-		if (isUtilsInitilized() == false) {
+		if (!isUtilsInitilized()) {
 			initializeUtils();
-			if (isUtilsInitilized() == false) {
+			if (!isUtilsInitilized()) {
 				return consoleOutStr;
 			}
 		}
