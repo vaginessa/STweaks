@@ -1,7 +1,7 @@
 <resources>
 
     <string name="app_name">STweaks</string>
-    <string name="menu_settings">Settings</string>
+    <string name="menu_about">About STweaks</string>
     <string name="title_activity_main">STweaks</string>
     <string name="bottom_accept">Apply</string>
     <string name="bottom_decline">Discard</string>

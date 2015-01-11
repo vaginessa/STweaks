@@ -11,9 +11,12 @@ import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 import android.app.ActionBar;
+import android.app.AlertDialog;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -24,6 +27,7 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -84,13 +88,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			isOk = parseUIFromXml(is);
 		}
 		return isOk;
-	}
-	
-	private void addSpecialTabs()
-	{
-		SyhExtrasTab it = new SyhExtrasTab(this);
-		
-		syhTabList.add(it);
 	}
 
 	private boolean isKernelSupportOk() {
@@ -419,7 +416,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
-        // Test mViewPager.setBackgroundColor(Color.WHITE);
     	mViewPager.setVisibility(ViewPager.GONE);
         mViewPager.setAdapter(mSectionsPagerAdapter);
         
@@ -451,9 +447,84 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        //TODO: move extras tab to options menu
-        //getMenuInflater().inflate(R.menu.activity_main, menu);
+        //DONE: move extras tab to options menu
+        getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle presses on the action bar items
+        final Context mContext = this;
+        switch (item.getItemId()) {
+            case R.id.menu_about: {
+                AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                View v = LayoutInflater.from(mContext).inflate(R.layout.syh_extrastab, mViewPager, false);
+                final TextView tv = (TextView) v.findViewById(R.id.textViewAppVersion);
+                try {
+                    final String appVersion = mContext.getPackageManager().getPackageInfo(mContext.getPackageName(), 0).versionName;
+                    tv.setText("App Version: " + appVersion);
+                } catch (PackageManager.NameNotFoundException e) {
+                    tv.setText("App Version: Not found!");
+                }
+
+                final TextView tv2 = (TextView) v.findViewById(R.id.textViewKernelVersion);
+                tv2.setText("Kernel version: " + System.getProperty("os.version"));
+
+                String s = "";
+                s += "\n Kernel Version: " + System.getProperty("os.version");
+                s += "\n ROM Version: " + android.os.Build.VERSION.INCREMENTAL;
+                s += "\n ROM API Level: " + android.os.Build.VERSION.SDK_INT;
+                s += "\n ROM Codename: " + android.os.Build.VERSION.CODENAME;
+                s += "\n ROM Release Version: " + android.os.Build.VERSION.RELEASE;
+                s += "\n Hardware Serial: " + android.os.Build.SERIAL;
+                s += "\n Radio Version: " + android.os.Build.getRadioVersion();
+                s += "\n Device: " + android.os.Build.DEVICE;
+                //s += "\n Model (and Product): " + android.os.Build.MODEL + " (" + android.os.Build.PRODUCT + ")";
+                tv2.setText(s);
+                builder.setView(v)
+
+                .setPositiveButton("Back", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                })
+                .setTitle("About STweaks")
+                .setIcon(R.drawable.ic_launcher)
+                .create();
+                builder.show();
+
+            }
+                return true;
+            case R.id.menu_reset: {
+                AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                builder.setMessage("All settings will be reset. You will have to relaunch the application.")
+                        .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // Handle Ok
+                                Utils.executeRootCommandInThread("/res/uci.sh delete default");
+                                System.exit(0);
+                            }
+                        })
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // Handle Cancel
+                            }
+                        })
+                        .setTitle("Warning")
+                        .setIcon(R.drawable.ic_launcher)
+                        .create();
+                        builder.show();
+            }
+                return true;
+            case R.id.menu_flash: {
+                Toast toast1 = Toast.makeText(mContext, R.string.coming_soon, Toast.LENGTH_LONG);
+                toast1.show();
+            }
+            return true;
+            default:
+            return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
@@ -541,8 +612,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			//ScrollView tabEnclosingLayout = new ScrollView(getActivity());
        		//tabEnclosingLayout.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 
-            Context ctx = getActivity();
-            ScrollView tabEnclosingLayout = (ScrollView) LayoutInflater.from(ctx).inflate(R.layout.template_tab_scrollview,mViewPager, false);
+            ScrollView tabEnclosingLayout = (ScrollView) LayoutInflater.from(getActivity()).inflate(R.layout.template_tab_scrollview,mViewPager, false);
 
        		SyhTab tab = syhTabList.get(tabIndex);
        		
@@ -560,7 +630,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
            		//tabContentLayout.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
                 //tabContentLayout.setElevation(16); // Test
 
-                LinearLayout tabContentLayout = (LinearLayout) LayoutInflater.from(ctx).inflate(R.layout.template_content_layout, mViewPager, false);
+                LinearLayout tabContentLayout = (LinearLayout) LayoutInflater.from(getActivity()).inflate(R.layout.template_content_layout, mViewPager, false);
 
                 for  (int j = 0; j < tab.panes.size(); j++)
 		        {
@@ -613,7 +683,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
         	if (userInterfaceConfigSuccess)
         	{
-        		addSpecialTabs();
         		getScriptValuesWithoutUiChange();
         	}
         	
@@ -633,7 +702,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                 assert actionBar != null;
                 actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
     		    //--actionBar.show();
-                actionBar.setElevation(16); // Test
     	    	mViewPager.setVisibility(ViewPager.VISIBLE);
         		        		
         		//initUI(mainLayout);

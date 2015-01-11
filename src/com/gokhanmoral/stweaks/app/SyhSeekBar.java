@@ -73,7 +73,7 @@ public final class SyhSeekBar extends SyhControl implements OnSeekBarChangeListe
         seekbar.setProgress( (val-min) /step);
         seekbar.setOnSeekBarChangeListener(this); // set listener.
 
-		//--seekbar.setSecondaryProgress(max/2);//TODO: fix it
+
 		
 		applyScriptValueToUserInterface();
 		
@@ -102,6 +102,7 @@ public final class SyhSeekBar extends SyhControl implements OnSeekBarChangeListe
 		valueFromUser = Integer.toString(value);
     	seekBarValueText.setText(valueFromUser + " " + unit);
 		//--seekBarValueText.setText(progress + " " + unit);
+        //seekbar.setSecondaryProgress(max/2);//TODO: fix it
     }
 
 	@Override

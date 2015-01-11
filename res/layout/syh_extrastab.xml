@@ -1,17 +1,10 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     		  android:id="@+id/SyhExtrasTabLayout"
-              android:layout_width="fill_parent" 
-              android:layout_height="fill_parent" 
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
               android:orientation="vertical"
-              android:gravity="center"
-              android:background="@color/cmwhite"
-              android:paddingTop="0dip"
-              android:layout_marginStart="@dimen/size_medium"
-              android:layout_marginTop="@dimen/size_large"
-              android:layout_marginEnd="@dimen/size_medium"
-              android:layout_marginBottom="@dimen/size_large"
-              android:elevation="@dimen/size_medium">
+              android:gravity="center">
               
         <TextView
             android:id="@+id/textViewDevInfo"
@@ -28,28 +21,7 @@
         android:layout_height="30dp"
         android:textColor="@color/black"
         android:textStyle="italic"
-        android:background="@color/cmwhite"
         android:gravity="center"/>
-                
-       	<Button 
-        android:id="@+id/ResetSettings"
-        android:layout_width="300dp"
-        android:layout_height="65dp"
-        android:typeface="serif"
-        android:textSize="16sp"
-        style="?android:attr/buttonBarButtonStyle"
-        android:text="@string/reset_settings"
-        android:layout_marginTop="15dp" />
-        
-       	<Button 
-        android:id="@+id/FlashKernel"
-        android:layout_width="300dp"
-        android:layout_height="65dp"
-        android:typeface="serif"
-        android:textSize="16sp"
-        style="?android:attr/buttonBarButtonStyle"
-        android:text="@string/flash_kernel"
-        android:layout_marginBottom="5dp" />
         
         <TextView
         android:id="@+id/textViewKernelVersion"
@@ -62,13 +34,3 @@
         android:layout_margin="10dp"/>
                       	
 </LinearLayout>
-
- <!--        
-       	<Button 
-        android:id="@+id/PayPalButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:typeface="serif"
-        android:textColor="#ffffffff"
-        android:text="@string/paypal"/>
-  -->   
