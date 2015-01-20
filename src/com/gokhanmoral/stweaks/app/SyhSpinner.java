@@ -1,22 +1,16 @@
 package com.gokhanmoral.stweaks.app;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.gokhanmoral.stweaks.app.R;
-
 import android.app.Activity;
-import android.content.Context;
-import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public final class SyhSpinner extends SyhControl implements OnItemSelectedListener{
 	
@@ -135,30 +129,30 @@ public final class SyhSpinner extends SyhControl implements OnItemSelectedListen
 	public void onNothingSelected(AdapterView<?> arg0) {
 		// TODO Auto-generated method stub
 	}
-	
-	private static class CustomArrayAdapter<T> extends ArrayAdapter<T>
-	{
-	    public CustomArrayAdapter(Context ctx, List<T> objects)
-	    {
-	        super(ctx, android.R.layout.simple_spinner_item, objects);
-	    }
+
+	//private static class CustomArrayAdapter<T> extends ArrayAdapter<T>
+	//{
+	//    public CustomArrayAdapter(Context ctx, List<T> objects)
+	//    {
+	//        super(ctx, android.R.layout.simple_spinner_item, objects);
+	//    }
 
 	    //other constructors
-	    @Override
-	    public View getDropDownView(int position, View convertView, ViewGroup parent)
-	    {
-	        View view = super.getView(position, convertView, parent);
+	//    @Override
+	//    public View getDropDownView(int position, View convertView, ViewGroup parent)
+	//    {
+	//        View view = super.getView(position, convertView, parent);
 
-	        //we know that simple_spinner_item has android.R.id.text1 TextView:         
+	        //we know that simple_spinner_item has android.R.id.text1 TextView:
 
 	        /* if(isDroidX) {*/
-	            TextView text = (TextView)view.findViewById(android.R.id.text1);
-	            text.setTextColor(Color.RED);//choose your color :)         
+	//            TextView text = (TextView)view.findViewById(android.R.id.text1);
+	//            text.setTextColor(Color.RED);//choose your color :)
 	        /*}*/
 
-	        return view;
-	    }
-	}
+	 //       return view;
+	 //   }
+	//}
 
 	@Override
 	protected void applyScriptValueToUserInterface() {

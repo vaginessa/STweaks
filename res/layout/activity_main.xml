@@ -27,10 +27,11 @@
         android:layout_marginStart="@dimen/size_small"
         android:layout_marginEnd="@dimen/size_small"
         android:layout_marginBottom="@dimen/size_medium"
-        android:elevation="@dimen/size_large">
+        android:elevation="@dimen/size_large"
+        tools:ignore="UnusedAttribute">
 
 		<Button
-            style="?android:attr/buttonBarPositiveButtonStyle"
+            style="?android:attr/buttonBarButtonStyle"
 	        android:id="@+id/AcceptButton"
 	        android:layout_width="0dip"
 	        android:layout_height="match_parent"
@@ -42,7 +43,7 @@
 	        />
 
 		<Button
-            style="?android:attr/buttonBarNegativeButtonStyle"
+            style="?android:attr/buttonBarButtonStyle"
 	        android:id="@+id/DeclineButton"
 	        android:layout_width="0dip"
 	        android:layout_height="match_parent"

@@ -6,7 +6,6 @@
     android:paddingStart="@dimen/size_small"
     android:paddingTop="@dimen/size_large"
     android:paddingEnd="@dimen/size_small"
-    android:paddingBottom="@dimen/size_large"
-    android:elevation="@dimen/size_medium">
+    android:paddingBottom="@dimen/size_large">
 
 </LinearLayout>

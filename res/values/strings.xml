@@ -11,7 +11,14 @@
     <string name="flash_kernel">Flash Kernel</string>
     <string name="coming_soon">Coming soon!</string>
     <string name="reset_settings">Reset settings to default</string>
-    <string name="developer_info">Developed by Gokhan Moral</string>
+    <string name="developer_info">Developed by Gokhan Moral \nUpdated by B--B</string>
     <string name="startmenu_no_root">No root access, or timeout!</string>
+    <!--TODO: Move profile selector as menu item
+    <string name="profile_check">Check Profile</string>
+    <string name="extreme_performance">Extreme Performance Profile</string>
+    <string name="performance">Performance Profile</string>
+    <string name="default_profile">Default Profile</string>
+    <string name="battery">Battery Profile</string>
+    <string name="extreme_battery">Extreme Battery Profile</string>-->
     
 </resources>

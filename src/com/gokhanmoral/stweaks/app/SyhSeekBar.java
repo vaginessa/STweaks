@@ -74,7 +74,7 @@ public final class SyhSeekBar extends SyhControl implements OnSeekBarChangeListe
         seekbar.setOnSeekBarChangeListener(this); // set listener.
 
 
-		
+
 		applyScriptValueToUserInterface();
 		
 		controlLayout.addView(seekbar);
@@ -111,7 +111,7 @@ public final class SyhSeekBar extends SyhControl implements OnSeekBarChangeListe
 
 	@Override
 	public void onStopTrackingTouch(SeekBar seekBar) {
-    	if (isChanged())
+        if (isChanged())
     	{
     		this.vci.valueChanged();
     	}
@@ -136,11 +136,9 @@ public final class SyhSeekBar extends SyhControl implements OnSeekBarChangeListe
 		valueFromUser = valueFromScript;
 	}
 
-	
 	@Override
 	protected String getDefaultValue() {
 		return Integer.toString(min);
 	}
 
-	
 }

@@ -1,15 +1,5 @@
 package com.gokhanmoral.stweaks.app;
 
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-import org.xmlpull.v1.XmlPullParserFactory;
-
 import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.FragmentTransaction;
@@ -31,12 +21,21 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+import org.xmlpull.v1.XmlPullParserFactory;
+
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
 
 //TODO: check for updates (almost ready)
 //TODO: flash kernel/zip
@@ -150,7 +149,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 						// if <settingsTab>, get attribute: 'name'
 						if(tagName.equalsIgnoreCase("settingsTab")) {
 							//Log.w("parseUIFromXml", "settingsTab name = " + parser.getAttributeValue(null, "name"));
-							tab = new SyhTab(this);
+							tab = new SyhTab();
 							tab.name = parser.getAttributeValue(null, "name");
 						}
 						// if <settingsPane>, get attribute: 'name' and 'description'
@@ -352,7 +351,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         assert actionBar != null;
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD); //hide "only tabs" in action bar
 		//-- createSyhUI(actionBar);
-    	
+
     	LinearLayout acceptDecline = (LinearLayout)findViewById(R.id.AcceptDeclineLayout);
     	acceptDecline.setVisibility(LinearLayout.GONE);
 		final Button button = (Button) acceptDecline.findViewById(R.id.AcceptButton);
@@ -480,7 +479,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                 s += "\n Hardware Serial: " + android.os.Build.SERIAL;
                 s += "\n Radio Version: " + android.os.Build.getRadioVersion();
                 s += "\n Device: " + android.os.Build.DEVICE;
-                //s += "\n Model (and Product): " + android.os.Build.MODEL + " (" + android.os.Build.PRODUCT + ")";
+                s += "\n Model (and Product): " + android.os.Build.MODEL + " (" + android.os.Build.PRODUCT + ")";
                 tv2.setText(s);
                 builder.setView(v)
 
@@ -488,10 +487,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
                     }
-                })
-                .setTitle("About STweaks")
-                .setIcon(R.drawable.ic_launcher)
-                .create();
+                });
+                builder.setIcon(R.drawable.ic_launcher);
+                builder.create();
                 builder.show();
 
             }
@@ -511,9 +509,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                                 // Handle Cancel
                             }
                         })
-                        .setTitle("Warning")
-                        .setIcon(R.drawable.ic_launcher)
-                        .create();
+                        .setTitle("Warning");
+                        builder.setIcon(R.drawable.old_launcher);
+                        builder.create();
                         builder.show();
             }
                 return true;
@@ -616,7 +614,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
        		SyhTab tab = syhTabList.get(tabIndex);
        		
-       		View  customView = tab.getCustomView(tabEnclosingLayout);
+       		View  customView = tab.getCustomView();
        		if(customView != null)
        		{
        			tabEnclosingLayout.addView(customView);
@@ -769,8 +767,4 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
             break;
 		}		
 	}
-
-
 }
-
-
