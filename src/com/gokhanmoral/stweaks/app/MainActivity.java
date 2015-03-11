@@ -487,10 +487,11 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
                     }
-                });
-                builder.setIcon(R.drawable.ic_launcher);
-                builder.create();
-                builder.show();
+                })
+                .setTitle("About STweaks")
+                .setIcon(R.drawable.ic_launcher)
+                .create()
+                .show();
 
             }
                 return true;
@@ -509,10 +510,10 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                                 // Handle Cancel
                             }
                         })
-                        .setTitle("Warning");
-                        builder.setIcon(R.drawable.old_launcher);
-                        builder.create();
-                        builder.show();
+                        .setTitle("Warning")
+                        .setIcon(R.drawable.old_launcher)
+                        .create()
+                        .show();
             }
                 return true;
             case R.id.menu_flash: {
