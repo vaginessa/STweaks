@@ -6,7 +6,9 @@ import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -456,6 +458,25 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         // Handle presses on the action bar items
         final Context mContext = this;
         switch (item.getItemId()) {
+
+            case R.id.menu_donation: {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse("http://forum.xda-developers.com/donatetome.php?u=4899086"));
+                startActivity(intent);
+            }
+            return true;
+
+            case R.id.menu_kernel_thread: {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse("http://forum.xda-developers.com/showthread.php?t=2590246"));
+                startActivity(intent);
+            }
+            return true;
+
             case R.id.menu_about: {
                 AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
                 View v = LayoutInflater.from(mContext).inflate(R.layout.syh_extrastab, mViewPager, false);

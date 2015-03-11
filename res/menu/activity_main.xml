@@ -7,7 +7,16 @@
         android:title="@string/reset_settings"
         android:icon="@drawable/ic_reset_settings"
         android:showAsAction="ifRoom"/>
+    <item android:id="@+id/menu_kernel_thread"
+        android:title="@string/kernel_thread"
+        android:orderInCategory="100"
+        android:showAsAction="never"  />
+    <item android:id="@+id/menu_donation"
+        android:title="@string/donation"
+        android:orderInCategory="110"
+        android:showAsAction="never"  />
     <item android:id="@+id/menu_flash"
         android:title="@string/flash_kernel"
+        android:orderInCategory="120"
         android:showAsAction="never"  />
 </menu>

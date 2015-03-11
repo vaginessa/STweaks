@@ -13,6 +13,8 @@
     <string name="reset_settings">Reset settings to default</string>
     <string name="developer_info">Developed by Gokhan Moral \nUpdated by B--B</string>
     <string name="startmenu_no_root">No root access, or timeout!</string>
+    <string name="kernel_thread">Kernel Thread</string>
+    <string name="donation">Donation</string>
     <!--TODO: Move profile selector as menu item
     <string name="profile_check">Check Profile</string>
     <string name="extreme_performance">Extreme Performance Profile</string>
