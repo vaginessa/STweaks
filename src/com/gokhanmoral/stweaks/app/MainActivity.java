@@ -38,6 +38,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 //TODO: check for updates (almost ready)
 //TODO: flash kernel/zip
@@ -468,6 +470,23 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
             }
             return true;
 
+            case R.id.select_profile: {
+                AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                View v = LayoutInflater.from(mContext).inflate(R.layout.profile_chooser, mViewPager, false);
+                builder.setView(v)
+
+                        .setPositiveButton("Back", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        })
+                        .setTitle("Choose STweaks Profile")
+                        .setIcon(R.drawable.ic_launcher)
+                        .create()
+                        .show();
+            }
+            return true;
+
             case R.id.menu_kernel_thread: {
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_VIEW);
@@ -516,6 +535,26 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
             }
                 return true;
+            case R.id.menu_kernel_bug: {
+                Utils.executeRootCommandInThread("/res/customconfig/actions/push-actions/debug_to_sd + 1");
+                Toast toast = Toast.makeText(mContext, R.string.log_done, Toast.LENGTH_LONG);
+                toast.show();
+               }
+            return true;
+            case R.id.menu_app_bug: {
+                Utils.executeRootCommandInThread("/res/customconfig/actions/push-actions/debug_to_sd + 2");
+                Toast toast = Toast.makeText(mContext, R.string.logging, Toast.LENGTH_LONG);
+                toast.show();
+                Timer timer = new Timer();
+                timer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        System.exit(0);
+                    }
+
+                }, 31000);
+            }
+            return true;
             case R.id.menu_reset: {
                 AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
                 builder.setMessage("All settings will be reset. You will have to relaunch the application.")
@@ -789,4 +828,40 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
             break;
 		}		
 	}
+
+    public void extremePerformance(View view) {
+        Utils.executeRootCommandInThread("/res/customconfig/actions/push-actions/config_backup_restore + 7");
+        Toast toast = Toast.makeText(getApplicationContext(), R.string.wait, Toast.LENGTH_LONG);
+        toast.show();
+    }
+
+    public void performance(View view) {
+        Utils.executeRootCommandInThread("/res/customconfig/actions/push-actions/config_backup_restore + 5");
+        Toast toast = Toast.makeText(getApplicationContext(), R.string.wait, Toast.LENGTH_LONG);
+        toast.show();
+    }
+
+    public void defaultProfile(View view) {
+        Utils.executeRootCommandInThread("/res/customconfig/actions/push-actions/config_backup_restore + 4");
+        Toast toast = Toast.makeText(getApplicationContext(), R.string.wait, Toast.LENGTH_LONG);
+        toast.show();
+    }
+
+    public void battery(View view) {
+        Utils.executeRootCommandInThread("/res/customconfig/actions/push-actions/config_backup_restore + 3");
+        Toast toast = Toast.makeText(getApplicationContext(), R.string.wait, Toast.LENGTH_LONG);
+        toast.show();
+    }
+
+    public void extremeBattery(View view) {
+        Utils.executeRootCommandInThread("/res/customconfig/actions/push-actions/config_backup_restore + 6");
+        Toast toast = Toast.makeText(getApplicationContext(), R.string.wait, Toast.LENGTH_LONG);
+        toast.show();
+    }
+
+    public void profileCheck(View view) {
+        Toast toast = Toast.makeText(getApplicationContext(),"Your profile is: " +Utils.executeRootCommandInThread("cat /data/.alucard/.active.profile"), Toast.LENGTH_SHORT);
+        toast.show();
+    }
+
 }
