@@ -28,5 +28,24 @@
     <string name="battery">Battery</string>
     <string name="extreme_battery">Extreme Battery Profile</string>
     <string name="disclaimer">TO DO</string>
+    <string name="reset_settings_prompt">All settings will be reset. You will have to relaunch the application.</string>
+    <string name="warning">Warning</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+    <string name="kernel">"\n Kernel Version: "</string>
+    <string name="back">Back</string>
+    <string name="romversion">"\n ROM Version: "</string>
+    <string name="romapi">"\n ROM API Level: "</string>
+    <string name="romcode">"\n ROM Codename: "</string>
+    <string name="romrel">"\n ROM Release Version: "</string>
+    <string name="hwserial">"\n Hardware Serial: "</string>
+    <string name="radio">"\n Baseband Version: "</string>
+    <string name="device">"\n Device: "</string>
+    <string name="model">"\n Model (and Product): "</string>
+    <string name="appver">App Version: </string>
+    <string name="appvernf">App Version: Not found!</string>
+    <string name="choose_profile">Choose STweaks Profile</string>
+    <string name="loading">Loading! Please wait…</string>
+    <string name="yourprofile">"Your Profile is: "</string>
 
 </resources>

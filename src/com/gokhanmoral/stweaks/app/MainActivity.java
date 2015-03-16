@@ -23,6 +23,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -54,7 +56,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     //==================== Syh UI Elements ================================
     
 	private static final String LOG_TAG = MainActivity.class.getName();
-    private static final ArrayList<SyhTab> syhTabList = new ArrayList<>();
+    public static final ArrayList<SyhTab> syhTabList = new ArrayList<>();
     private final Boolean testingWithNoKernelSupport = false;
 	private Boolean kernelSupportOk = false;
 	private Boolean userInterfaceConfigSuccess = false;
@@ -130,7 +132,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			// get event type
 			int eventType = parser.getEventType();
 			
-	    	SyhTab tab = null;
+	        SyhTab tab = null;
 	    	SyhPane pane = null;
 	    	SyhSpinner spinner = null;
 	    	SyhSeekBar seekbar;
@@ -365,7 +367,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     	
 	    //final ActionBar actionBar = getActionBar();
     	//actionBar.hide();
-
     
         TextView startTextView = (TextView)findViewById(R.id.textViewStart);
         kernelSupportOk = isKernelSupportOk();
@@ -379,7 +380,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
          	if (Utils.canRunRootCommandsInThread())
          	{
          		new LoadDynamicUI().execute();
-         		dialog = ProgressDialog.show(this, getResources().getText(R.string.app_name), "Loading! Please wait...", true);
+         		dialog = ProgressDialog.show(this, getResources().getText(R.string.app_name), getResources().getText(R.string.loading), true);
          	}
          	else
          	{
@@ -475,12 +476,12 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                 View v = LayoutInflater.from(mContext).inflate(R.layout.profile_chooser, mViewPager, false);
                 builder.setView(v)
 
-                        .setPositiveButton("Back", new DialogInterface.OnClickListener() {
+                        .setPositiveButton(R.string.back, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 dialog.cancel();
                             }
                         })
-                        .setTitle("Choose STweaks Profile")
+                        .setTitle(R.string.choose_profile)
                         .setIcon(R.drawable.ic_launcher)
                         .create()
                         .show();
@@ -502,33 +503,34 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                 final TextView tv = (TextView) v.findViewById(R.id.textViewAppVersion);
                 try {
                     final String appVersion = mContext.getPackageManager().getPackageInfo(mContext.getPackageName(), 0).versionName;
-                    tv.setText("App Version: " + appVersion);
+                    tv.setText(getResources().getText(R.string.appver) + appVersion);
                 } catch (PackageManager.NameNotFoundException e) {
-                    tv.setText("App Version: Not found!");
+                    tv.setText(getResources().getText(R.string.appvernf));
                 }
 
                 final TextView tv2 = (TextView) v.findViewById(R.id.textViewKernelVersion);
-                tv2.setText("Kernel version: " + System.getProperty("os.version"));
+                tv2.setText(getResources().getText(R.string.kernel) + System.getProperty("os.version"));
 
                 String s = "";
-                s += "\n Kernel Version: " + System.getProperty("os.version");
-                s += "\n ROM Version: " + android.os.Build.VERSION.INCREMENTAL;
-                s += "\n ROM API Level: " + android.os.Build.VERSION.SDK_INT;
-                s += "\n ROM Codename: " + android.os.Build.VERSION.CODENAME;
-                s += "\n ROM Release Version: " + android.os.Build.VERSION.RELEASE;
-                s += "\n Hardware Serial: " + android.os.Build.SERIAL;
-                s += "\n Radio Version: " + android.os.Build.getRadioVersion();
-                s += "\n Device: " + android.os.Build.DEVICE;
-                s += "\n Model (and Product): " + android.os.Build.MODEL + " (" + android.os.Build.PRODUCT + ")";
+                s += getResources().getText(R.string.kernel) + System.getProperty("os.version");
+                s += getResources().getText(R.string.romversion) + android.os.Build.VERSION.INCREMENTAL;
+                s += getResources().getText(R.string.romapi);
+                s += (android.os.Build.VERSION.SDK_INT);
+                s += getResources().getText(R.string.romcode) + android.os.Build.VERSION.CODENAME;
+                s += getResources().getText(R.string.romrel) + android.os.Build.VERSION.RELEASE;
+                s += getResources().getText(R.string.hwserial) + android.os.Build.SERIAL;
+                s += getResources().getText(R.string.radio) + android.os.Build.getRadioVersion();
+                s += getResources().getText(R.string.device) + android.os.Build.DEVICE;
+                s += getResources().getText(R.string.model) + android.os.Build.MODEL + " (" + android.os.Build.PRODUCT + ")";
                 tv2.setText(s);
                 builder.setView(v)
 
-                .setPositiveButton("Back", new DialogInterface.OnClickListener() {
+                .setPositiveButton(R.string.back, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
                     }
                 })
-                .setTitle("About STweaks")
+                .setTitle(R.string.menu_about)
                 .setIcon(R.drawable.ic_launcher)
                 .create()
                 .show();
@@ -557,20 +559,20 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
             return true;
             case R.id.menu_reset: {
                 AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-                builder.setMessage("All settings will be reset. You will have to relaunch the application.")
-                        .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                builder.setMessage(R.string.reset_settings_prompt)
+                        .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 // Handle Ok
                                 Utils.executeRootCommandInThread("/res/uci.sh delete default");
                                 System.exit(0);
                             }
                         })
-                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 // Handle Cancel
                             }
                         })
-                        .setTitle("Warning")
+                        .setTitle(R.string.warning)
                         .setIcon(R.drawable.old_launcher)
                         .create()
                         .show();
@@ -806,6 +808,10 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		if (!valueChanged){			
 		   	LinearLayout acceptDecline = (LinearLayout)findViewById(R.id.AcceptDeclineLayout);
 		   	acceptDecline.setVisibility(LinearLayout.VISIBLE);
+            Animation animation;
+            animation = AnimationUtils.loadAnimation(getApplicationContext(),
+                    R.anim.fade_in_animation);
+            acceptDecline.startAnimation(animation);
 		}
 		valueChanged = true;
 	}
@@ -815,6 +821,10 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	   	LinearLayout acceptDecline = (LinearLayout)findViewById(R.id.AcceptDeclineLayout);
 		switch(v.getId()) {
         case R.id.AcceptButton:
+            Animation animation;
+            animation = AnimationUtils.loadAnimation(getApplicationContext(),
+                    R.anim.fade_scale_out_animation);
+            acceptDecline.startAnimation(animation);
 		   	acceptDecline.setVisibility(LinearLayout.GONE);
 	    	new ApplyChangedValues().execute();
 			//TODO: Too fast!!
@@ -822,6 +832,10 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         	valueChanged = false;
             break;
         case R.id.DeclineButton:
+            Animation animation1;
+            animation1 = AnimationUtils.loadAnimation(getApplicationContext(),
+                    R.anim.fade_out_animation);
+            acceptDecline.startAnimation(animation1);
 		   	acceptDecline.setVisibility(LinearLayout.GONE);
         	clearUserSelections(); //UI change only, no scripts...
 			valueChanged = false;
@@ -860,7 +874,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     }
 
     public void profileCheck(View view) {
-        Toast toast = Toast.makeText(getApplicationContext(),"Your profile is: " +Utils.executeRootCommandInThread("cat /data/.alucard/.active.profile"), Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(getApplicationContext(), getResources().getText(R.string.yourprofile) + Utils.executeRootCommandInThread("cat /data/.alucard/.active.profile"), Toast.LENGTH_SHORT);
         toast.show();
     }
 
