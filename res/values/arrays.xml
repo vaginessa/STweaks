@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array
+        name="pref_launcher_icon_entries">
+        <item>Material Icon</item>
+        <item>Stock Icon</item>
+        <item>No Icon\n(!!CAUTION!!)</item>
+    </string-array>
+    <string-array
+        name="pref_launcher_icon_values">
+        <item>material</item>
+        <item>stock</item>
+        <item>noicon</item>
+    </string-array>
+</resources>

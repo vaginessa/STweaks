@@ -45,4 +45,11 @@
     <string name="warning">Attenzione</string>
     <string name="yourprofile">"Il tuo profilo è: "</string>
     <string name="romrel">"\n Versione di Rilascio della ROM: "</string>
+    <string name="settings">"Impostazioni"</string>
+    <string name="pref_launcher_icon_description">"Seleziona l\'icona da mostrare nel launcher"</string>
+    <string name="pref_launcher_icon_default">material</string>
+    <string name="pref_launcher_icon">"Icona nel Laucher"</string>
+    <string name="no_icon">"Rimuovo l\' icona di STweaks, attendi qualche secondo"</string>
+    <string name="change_icon">"Cambio l\' icona di STweaks, attendi qualche secondo"</string>
+    <string name="icon_prompt">"Sei sicuro? Se STweaks non è integrato nella tua ROM dovrai disinstallarlo manualmente, riavviare il dispositivo e reinstallare STweaks manualmente!"</string>
 </resources>

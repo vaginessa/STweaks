@@ -31,4 +31,8 @@
         android:title="@string/reset_settings"
         android:orderInCategory="150"
         android:showAsAction="never"/>
+    <item android:id="@+id/menu_settings"
+        android:title="@string/settings"
+        android:orderInCategory="160"
+        android:showAsAction="never"/>
 </menu>

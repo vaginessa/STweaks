@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListPreference
+        android:key="pref_launcher_icon"
+        android:title="@string/pref_launcher_icon"
+        android:dialogTitle="@string/pref_launcher_icon_description"
+        android:entries="@array/pref_launcher_icon_entries"
+        android:entryValues="@array/pref_launcher_icon_values"
+        android:defaultValue="@string/pref_launcher_icon_default" />
+</PreferenceScreen>

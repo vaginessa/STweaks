@@ -583,6 +583,11 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                 toast1.show();
             }
             return true;
+            case R.id.menu_settings:
+                Intent intent = new Intent(MainActivity.this,
+                        STweaksSettingsActivity.class);
+                startActivity(intent);
+            return true;
             default:
             return super.onOptionsItemSelected(item);
         }
