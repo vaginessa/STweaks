@@ -7,4 +7,25 @@
         android:entries="@array/pref_launcher_icon_entries"
         android:entryValues="@array/pref_launcher_icon_values"
         android:defaultValue="@string/pref_launcher_icon_default" />
+    <ListPreference
+        android:key="pref_animation_in"
+        android:title="@string/pref_animation_in"
+        android:dialogTitle="@string/pref_animation_in_description"
+        android:entries="@array/pref_animation_in_entries"
+        android:entryValues="@array/pref_animation_in_values"
+        android:defaultValue="@string/pref_animation_in_default" />
+    <ListPreference
+        android:key="pref_animation_out_accept"
+        android:title="@string/pref_animation_out_accept"
+        android:dialogTitle="@string/pref_animation_out_description_accept"
+        android:entries="@array/pref_animation_out_accept_entries"
+        android:entryValues="@array/pref_animation_out_accept_values"
+        android:defaultValue="@string/pref_animation_out_default_accept" />
+    <ListPreference
+        android:key="pref_animation_out_decline"
+        android:title="@string/pref_animation_out_decline"
+        android:dialogTitle="@string/pref_animation_out_description_decline"
+        android:entries="@array/pref_animation_out_decline_entries"
+        android:entryValues="@array/pref_animation_out_decline_values"
+        android:defaultValue="@string/pref_animation_out_default_decline" />
 </PreferenceScreen>

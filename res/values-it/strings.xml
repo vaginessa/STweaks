@@ -47,9 +47,15 @@
     <string name="romrel">"\n Versione di Rilascio della ROM: "</string>
     <string name="settings">"Impostazioni"</string>
     <string name="pref_launcher_icon_description">"Seleziona l\'icona da mostrare nel launcher"</string>
-    <string name="pref_launcher_icon_default">material</string>
     <string name="pref_launcher_icon">"Icona nel Laucher"</string>
     <string name="no_icon">"Rimuovo l\' icona di STweaks, attendi qualche secondo"</string>
     <string name="change_icon">"Cambio l\' icona di STweaks, attendi qualche secondo"</string>
-    <string name="icon_prompt">"Sei sicuro? Se STweaks non è integrato nella tua ROM dovrai disinstallarlo manualmente, riavviare il dispositivo e reinstallare STweaks manualmente!"</string>
+    <string name="icon_prompt">"L\' icona di STweaks ora sparirà dal tuo launcher. Se STweaks non è stato integrato nella tua ROM dovrai disinstallarlo manualmente, riavviare il dispositivo e reinstallarlo manualmente!"</string>
+    <string name="do_not_show">"Non mostrare più"</string>
+    <string name="pref_animation_out_description_accept">"Animazione utilizzata quando si preme Salva"</string>
+    <string name="pref_animation_in_description">"Animazione utilizzata dai tasti Salva/Scarta quando appaiono"</string>
+    <string name="pref_animation_in">"Animazione di Entrata"</string>
+    <string name="pref_animation_out_accept">"Animazione di Uscita tasto Salva"</string>
+    <string name="pref_animation_out_description_decline">"Animazione utilizzata quando si preme Scarta"</string>
+    <string name="pref_animation_out_decline">"Animazione di Uscita tasto Scarta"</string>
 </resources>

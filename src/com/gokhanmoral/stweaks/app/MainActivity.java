@@ -7,10 +7,12 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -26,6 +28,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -62,7 +65,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	private Boolean userInterfaceConfigSuccess = false;
 	private Boolean valueChanged = false;
 	private ProgressDialog dialog = null;
-	private String valuesChanged = ""; 
+	private String valuesChanged = "";
 
 	private boolean getUserInterfaceConfigFromAssets() {
 		Log.i(LOG_TAG, "Siyah script NOT found! But testing is enabled, so continue...");
@@ -386,11 +389,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
          	{
          		startTextView.setText(R.string.startmenu_no_root);
          		Utils.reset();
-         	}       	
+         	}
         }
 
-    	
-//    	final Runnable r = new Runnable()
 //    	{
 //    	    public void run() 
 //    	    {
@@ -660,9 +661,8 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     		Bundle args = getArguments();
    	   		Integer tabIndex = args.getInt(ARG_SECTION_NUMBER);
    	   	    mTabIndex = tabIndex;
-        	//--Log.i(LOG_TAG, "onCreate savedInstanceState:" + savedInstanceState + " mTabIndex:" + mTabIndex);       	
+        	//--Log.i(LOG_TAG, "onCreate savedInstanceState:" + savedInstanceState + " mTabIndex:" + mTabIndex);
         }
-        
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
@@ -670,8 +670,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         	//-- Log.i(LOG_TAG, "onCreateView savedInstanceState:" + savedInstanceState + " mTabIndex:" + mTabIndex);
         	
     		ScrollView tabEnclosingLayout = createSyhTab(mTabIndex);
-	        
-	        return tabEnclosingLayout;
+            return tabEnclosingLayout;
         }
 
 		private ScrollView createSyhTab(Integer tabIndex) {
@@ -711,8 +710,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		        }
            		tabEnclosingLayout.addView(tabContentLayout);
        		}
-	        
-			return tabEnclosingLayout;
+            return tabEnclosingLayout;
 		}
 
     }
@@ -769,11 +767,11 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                 actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
     		    //--actionBar.show();
     	    	mViewPager.setVisibility(ViewPager.VISIBLE);
-        		        		
         		//initUI(mainLayout);
         		//clearUserSelections(); //apply script values to UI
         	}
         	new DialogCancelling().execute();
+            showDisclaimer();
         }
 
     }
@@ -813,10 +811,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		if (!valueChanged){			
 		   	LinearLayout acceptDecline = (LinearLayout)findViewById(R.id.AcceptDeclineLayout);
 		   	acceptDecline.setVisibility(LinearLayout.VISIBLE);
-            Animation animation;
-            animation = AnimationUtils.loadAnimation(getApplicationContext(),
-                    R.anim.fade_in_animation);
-            acceptDecline.startAnimation(animation);
+            changeAnimationIn();
 		}
 		valueChanged = true;
 	}
@@ -826,10 +821,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	   	LinearLayout acceptDecline = (LinearLayout)findViewById(R.id.AcceptDeclineLayout);
 		switch(v.getId()) {
         case R.id.AcceptButton:
-            Animation animation;
-            animation = AnimationUtils.loadAnimation(getApplicationContext(),
-                    R.anim.fade_scale_out_animation);
-            acceptDecline.startAnimation(animation);
+            changeAnimationOutAccept();
 		   	acceptDecline.setVisibility(LinearLayout.GONE);
 	    	new ApplyChangedValues().execute();
 			//TODO: Too fast!!
@@ -837,10 +829,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         	valueChanged = false;
             break;
         case R.id.DeclineButton:
-            Animation animation1;
-            animation1 = AnimationUtils.loadAnimation(getApplicationContext(),
-                    R.anim.fade_out_animation);
-            acceptDecline.startAnimation(animation1);
+            changeAnimationOutDiscard();
 		   	acceptDecline.setVisibility(LinearLayout.GONE);
         	clearUserSelections(); //UI change only, no scripts...
 			valueChanged = false;
@@ -883,4 +872,107 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         toast.show();
     }
 
+    public void showDisclaimer() {
+        //Variables
+        final String PREFS_DISCLAIMER = "ShowDisclaimer";
+        final CheckBox showdisclaimer;
+        // Put the disclaimer if required
+
+        SharedPreferences settings = getApplicationContext().getSharedPreferences(PREFS_DISCLAIMER, 0);
+        String skipMessage = settings.getString("doNotShow", "Not Checked");
+        if (!skipMessage.equals("Checked")) {
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            View v = LayoutInflater.from(getApplicationContext()).inflate(R.layout.disclaimer_tab, mViewPager, false);
+            showdisclaimer = (CheckBox) v.findViewById(R.id.donotshow);
+            builder.setView(v)
+                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            String checkBoxResult = "Not Checked";
+                            if (showdisclaimer.isChecked()) checkBoxResult = "Checked";
+                            SharedPreferences settings = getApplicationContext().getSharedPreferences(PREFS_DISCLAIMER, 0);
+                            SharedPreferences.Editor editor = settings.edit();
+                            editor.putString("doNotShow", checkBoxResult);
+                            editor.apply();
+                            dialog.dismiss();
+                        }
+                    });
+            builder.show();
+        }
+    }
+
+    public void changeAnimationIn() {
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(MainActivity.this);
+
+        LinearLayout acceptDecline = (LinearLayout)findViewById(R.id.AcceptDeclineLayout);
+        Animation animation;
+        String animin = prefs.getString("pref_animation_in", "");
+        switch (animin) {
+            case "fadein":
+                animation = AnimationUtils.loadAnimation(getApplicationContext(),
+                        R.anim.fade_in_animation);
+                acceptDecline.startAnimation(animation);
+            case "scalein":
+                animation = AnimationUtils.loadAnimation(getApplicationContext(),
+                        R.anim.scale_in_animation);
+                acceptDecline.startAnimation(animation);
+                break;
+            case "fadescalein":
+                animation = AnimationUtils.loadAnimation(getApplicationContext(),
+                        R.anim.fade_scale_in_animation);
+                acceptDecline.startAnimation(animation);
+                break;
+        }
+    }
+
+    public void changeAnimationOutAccept() {
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(MainActivity.this);
+
+        LinearLayout acceptDecline = (LinearLayout)findViewById(R.id.AcceptDeclineLayout);
+        Animation animation;
+        String animoutaccept = prefs.getString("pref_animation_out_accept", "");
+        switch (animoutaccept) {
+            case "fadeout":
+                animation = AnimationUtils.loadAnimation(getApplicationContext(),
+                        R.anim.fade_out_animation);
+                acceptDecline.startAnimation(animation);
+            case "scaleout":
+                animation = AnimationUtils.loadAnimation(getApplicationContext(),
+                        R.anim.scale_out_animation);
+                acceptDecline.startAnimation(animation);
+                break;
+            case "fadescaleout":
+                animation = AnimationUtils.loadAnimation(getApplicationContext(),
+                        R.anim.fade_scale_out_animation);
+                acceptDecline.startAnimation(animation);
+                break;
+        }
+    }
+
+    public void changeAnimationOutDiscard() {
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(MainActivity.this);
+
+        LinearLayout acceptDecline = (LinearLayout)findViewById(R.id.AcceptDeclineLayout);
+        Animation animation;
+        String animoutdecline = prefs.getString("pref_animation_out_decline", "");
+        switch (animoutdecline) {
+            case "fadeout":
+                animation = AnimationUtils.loadAnimation(getApplicationContext(),
+                        R.anim.fade_out_animation);
+                acceptDecline.startAnimation(animation);
+            case "scaleout":
+                animation = AnimationUtils.loadAnimation(getApplicationContext(),
+                        R.anim.scale_out_animation);
+                acceptDecline.startAnimation(animation);
+                break;
+            case "fadescaleout":
+                animation = AnimationUtils.loadAnimation(getApplicationContext(),
+                        R.anim.fade_scale_out_animation);
+                acceptDecline.startAnimation(animation);
+                break;
+        }
+    }
 }

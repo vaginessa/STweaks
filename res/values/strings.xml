@@ -50,9 +50,20 @@
     <string name="settings">"Settings"</string>
     <string name="pref_launcher_icon">"Launcher Icon"</string>
     <string name="pref_launcher_icon_description">"Choose the icon to show in the launcher"</string>
-    <string name="pref_launcher_icon_default">material</string>
+    <string name="pref_launcher_icon_default" translatable="false">material</string>
     <string name="change_icon">"Changing STweaks icon, just wait a few seconds"</string>
     <string name="no_icon">"Removing STweaks icon, just wait a few seconds"</string>
-    <string name="icon_prompt">"Are you sure? If STweaks is not integrated in your ROM you will have to manually uninstall STweaks, reboot your device and reinstall it again!"</string>
+    <string name="do_not_show">"Do not show again"</string>
+    <string name="icon_prompt">"STweaks icon now will disappear from your launcher. If STweaks has not been integrated in your ROM you will have to manually uninstall it, reboot your device and reinstall STweaks again!"</string>
+
+    <string name="pref_animation_in">"Animation In"</string>
+    <string name="pref_animation_in_description">"Animation used when Accept/Discard changes buttons become visible"</string>
+    <string name="pref_animation_in_default" translatable="false">"fadescalein"</string>
+    <string name="pref_animation_out_accept">"Animation Out Accept Button"</string>
+    <string name="pref_animation_out_description_accept">"Animation used when user press Accept Button"</string>
+    <string name="pref_animation_out_default_accept" translatable="false">"fadescaleout"</string>
+    <string name="pref_animation_out_description_decline">"Animation used when user press Discard Button"</string>
+    <string name="pref_animation_out_decline">"Animation Out Decline Button"</string>
+    <string name="pref_animation_out_default_decline" translatable="false">"fadescaleout"</string>
 
 </resources>
