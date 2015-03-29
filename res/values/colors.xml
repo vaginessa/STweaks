@@ -6,4 +6,9 @@
     <color name="cmwhite">#ffffffff</color>
     <color name="cmdkgray">#21272b</color>
     <color name="cmgray">#263238</color>
+    <color name="mdgray">#a0a0a0</color>
+    <color name="sammydkblue">#00849d</color>
+    <color name="sammyltblue">#00a5c3</color>
+    <color name="sammyyellow">#f8e57f</color>
+    <color name="sammytext">#427882</color>
 </resources>

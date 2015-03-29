@@ -1,6 +1,7 @@
 package com.gokhanmoral.stweaks.app;
 
 import android.app.ActionBar;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
@@ -352,6 +353,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_main);
         
         // Set up the action bar.
@@ -810,8 +812,8 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	public void valueChanged() {
 		if (!valueChanged){			
 		   	LinearLayout acceptDecline = (LinearLayout)findViewById(R.id.AcceptDeclineLayout);
-		   	acceptDecline.setVisibility(LinearLayout.VISIBLE);
             changeAnimationIn();
+		   	acceptDecline.setVisibility(LinearLayout.VISIBLE);
 		}
 		valueChanged = true;
 	}
@@ -872,7 +874,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         toast.show();
     }
 
-    public void showDisclaimer() {
+    void showDisclaimer() {
         //Variables
         final String PREFS_DISCLAIMER = "ShowDisclaimer";
         final CheckBox showdisclaimer;
@@ -901,7 +903,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         }
     }
 
-    public void changeAnimationIn() {
+    void changeAnimationIn() {
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(MainActivity.this);
 
@@ -913,6 +915,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                 animation = AnimationUtils.loadAnimation(getApplicationContext(),
                         R.anim.fade_in_animation);
                 acceptDecline.startAnimation(animation);
+                break;
             case "scalein":
                 animation = AnimationUtils.loadAnimation(getApplicationContext(),
                         R.anim.scale_in_animation);
@@ -926,7 +929,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         }
     }
 
-    public void changeAnimationOutAccept() {
+    void changeAnimationOutAccept() {
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(MainActivity.this);
 
@@ -938,6 +941,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                 animation = AnimationUtils.loadAnimation(getApplicationContext(),
                         R.anim.fade_out_animation);
                 acceptDecline.startAnimation(animation);
+                break;
             case "scaleout":
                 animation = AnimationUtils.loadAnimation(getApplicationContext(),
                         R.anim.scale_out_animation);
@@ -951,7 +955,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         }
     }
 
-    public void changeAnimationOutDiscard() {
+    void changeAnimationOutDiscard() {
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(MainActivity.this);
 
@@ -963,6 +967,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                 animation = AnimationUtils.loadAnimation(getApplicationContext(),
                         R.anim.fade_out_animation);
                 acceptDecline.startAnimation(animation);
+                break;
             case "scaleout":
                 animation = AnimationUtils.loadAnimation(getApplicationContext(),
                         R.anim.scale_out_animation);
@@ -972,6 +977,25 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                 animation = AnimationUtils.loadAnimation(getApplicationContext(),
                         R.anim.fade_scale_out_animation);
                 acceptDecline.startAnimation(animation);
+                break;
+        }
+    }
+
+    // Set the theme of the activity, according to the configuration.
+    public static void onActivityCreateSetTheme(Activity activity) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(activity);
+        String theme = prefs.getString("pref_theme", "");
+        switch (theme)
+        {
+            default:
+            case "light":
+                activity.setTheme(R.style.LightTheme);
+                break;
+            case "dark":
+                activity.setTheme(R.style.DarkTheme);
+                break;
+            case "sammy":
+                activity.setTheme(R.style.SammyTheme);
                 break;
         }
     }

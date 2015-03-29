@@ -31,20 +31,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/disclaimer"
-        android:textColor="@color/black"
         android:textStyle="italic"
         android:gravity="center"
         android:layout_marginTop="@dimen/size_large"
         android:paddingTop="@dimen/size_medium"
         android:paddingStart="@dimen/size_medium"
-        android:paddingEnd="@dimen/size_medium"/>
+        android:paddingEnd="@dimen/size_medium"
+        android:textColor="@color/mdgray"/>
 
     <CheckBox
         android:id="@+id/donotshow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/do_not_show"
-        android:textColor="@color/black">
+        android:textColor="@color/mdgray">
     </CheckBox>
 
 </LinearLayout>

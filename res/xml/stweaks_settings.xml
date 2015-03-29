@@ -28,4 +28,11 @@
         android:entries="@array/pref_animation_out_decline_entries"
         android:entryValues="@array/pref_animation_out_decline_values"
         android:defaultValue="@string/pref_animation_out_default_decline" />
+    <ListPreference
+        android:key="pref_theme"
+        android:title="@string/pref_theme"
+        android:dialogTitle="@string/pref_description_theme"
+        android:entries="@array/pref_theme_entries"
+        android:entryValues="@array/pref_theme_values"
+        android:defaultValue="@string/pref_theme_default" />
 </PreferenceScreen>

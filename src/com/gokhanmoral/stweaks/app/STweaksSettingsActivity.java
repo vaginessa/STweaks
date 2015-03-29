@@ -3,6 +3,7 @@ package com.gokhanmoral.stweaks.app;
 import android.app.AlertDialog;
 import android.content.ComponentName;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -11,8 +12,10 @@ import android.preference.PreferenceFragment;
 import android.widget.Toast;
 
 public class STweaksSettingsActivity extends PreferenceActivity {
+
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
+        MainActivity.onActivityCreateSetTheme(this);
         super.onCreate(savedInstanceState);
         getFragmentManager().beginTransaction().replace(android.R.id.content, new STweaksPreferenceFragment()).commit();
     }
@@ -53,7 +56,7 @@ public class STweaksSettingsActivity extends PreferenceActivity {
             // SharedPreferences.Editor editor = prefs.edit();
             switch (key) {
                 case "pref_launcher_icon":
-                    String icon = prefs.getString("pref_launcher_icon", "");
+                    final String icon = prefs.getString("pref_launcher_icon", "");
                     switch (icon) {
                         case "material":
                             getActivity().getPackageManager().setComponentEnabledSetting(
@@ -105,6 +108,53 @@ public class STweaksSettingsActivity extends PreferenceActivity {
                             break;
                     }
                     break;
+                case "pref_theme":
+                    String theme = prefs.getString("pref_theme", "");
+                    switch (theme) {
+                        case "light":
+                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                            builder.setMessage(R.string.theme_change)
+                                    .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            Intent restart = new Intent(getActivity(), MainActivity.class);
+                                            restart.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                            startActivity(restart);
+                                        }
+                                    })
+                                    .setTitle(R.string.warning)
+                                    .create()
+                                    .show();
+                            break;
+                        case "dark":
+                            AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity());
+                            builder1.setMessage(R.string.theme_change)
+                                    .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            Intent restart = new Intent(getActivity(), MainActivity.class);
+                                            restart.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                            startActivity(restart);
+                                        }
+                                    })
+                                    .setTitle(R.string.warning)
+                                    .create()
+                                    .show();
+                            break;
+                        case "sammy":
+                            AlertDialog.Builder builder2 = new AlertDialog.Builder(getActivity());
+                            builder2.setMessage(R.string.theme_change)
+                                    .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            Intent restart = new Intent(getActivity(), MainActivity.class);
+                                            restart.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                            startActivity(restart);
+                                        }
+                                    })
+                                    .setTitle(R.string.warning)
+                                    .create()
+                                    .show();
+                            break;
+                    }
+                break;
             }
         }
     }

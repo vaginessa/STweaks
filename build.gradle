@@ -16,6 +16,14 @@ android {
     compileSdkVersion 22
     buildToolsVersion "22.0.0"
 
+    defaultConfig {
+        applicationId "com.gokhanmoral.stweaks.app"
+        minSdkVersion 17
+        targetSdkVersion 22
+        versionCode 9
+        versionName "1.7"
+    }
+
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'

@@ -11,26 +11,33 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:text="@string/developer_info"
-            android:textColor="@color/black"
             android:textStyle="italic"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/textViewContributors"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/contributors"
+            android:textStyle="bold"
             android:gravity="center"/>
 
           <TextView
         android:id="@+id/textViewAppVersion"
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:textColor="@color/black"
         android:textStyle="italic"
         android:gravity="center"/>
+        <!--android:textColor="@color/black"-->
         
         <TextView
         android:id="@+id/textViewKernelVersion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
         android:paddingTop="10dip"
         android:paddingStart="@dimen/size_medium"
         android:paddingEnd="@dimen/size_medium"
         android:layout_margin="10dp"/>
+        <!--android:textColor="@color/black"-->
                       	
 </LinearLayout>

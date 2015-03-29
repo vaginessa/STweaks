@@ -2,7 +2,6 @@ package com.gokhanmoral.stweaks.app;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -143,24 +142,30 @@ abstract class SyhControl {
         controlLayout.addView(descriptionTextView);
 
 		createInternal();
-		
-		TextView paneSeparatorBlank = new TextView(context);
-		paneSeparatorBlank.setHeight(5);
+
+        //Panel Separator
+        TextView panelSeparatorTextView = (TextView) LayoutInflater.from(context).inflate(R.layout.template_panel_separator, controlLayout, false);
+        descriptionTextView.setText(description);
+        controlLayout.addView(panelSeparatorTextView);
+
+        // Moved to xml
+        //TextView paneSeparatorBlank = new TextView(context);
+        //paneSeparatorBlank.setHeight(5);
         //--paneSeparatorBlank.setBackgroundColor(Color.BLACK);
-        paneSeparatorBlank.setText("");
-        controlLayout.addView(paneSeparatorBlank); 
-		
-		TextView paneSeparatorLine = new TextView(context);
-		paneSeparatorLine.setHeight(2);
-        paneSeparatorLine.setBackgroundColor(Color.DKGRAY);
-        paneSeparatorLine.setText("");
-        controlLayout.addView(paneSeparatorLine);  
-        
-		TextView paneSeparatorBlankAfterLine = new TextView(context);
-		paneSeparatorBlankAfterLine.setHeight(10);
+        //paneSeparatorBlank.setText("");
+        //controlLayout.addView(paneSeparatorBlank);
+
+        //TextView paneSeparatorLine = new TextView(context);
+        //paneSeparatorLine.setHeight(2);
+        //paneSeparatorLine.setBackgroundColor(Color.DKGRAY);
+        //paneSeparatorLine.setText("");
+        //controlLayout.addView(paneSeparatorLine);
+
+        //TextView paneSeparatorBlankAfterLine = new TextView(context);
+        //paneSeparatorBlankAfterLine.setHeight(10);
         //--paneSeparatorBlank.setBackgroundColor(Color.BLACK);
-        paneSeparatorBlankAfterLine.setText("");
-        controlLayout.addView(paneSeparatorBlankAfterLine);  
+        //paneSeparatorBlankAfterLine.setText("");
+        //controlLayout.addView(paneSeparatorBlankAfterLine);
 
 		view = controlLayout;
 	}

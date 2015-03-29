@@ -25,7 +25,7 @@
     <string name="bottom_decline">Scarta</string>
     <string name="battery">Risparmio Energetico</string>
     <string name="app_bug">Segnala un bug dell\' App</string>
-    <string name="disclaimer">TO DO</string>
+    <string name="disclaimer">Non siamo responsabili per dispositivi non funzionanti, schede SD morte, guerre termonucleari o se venite licenziati perché la sveglia non suona. Siete pregati di fare qualche ricerca se avete dei dubbi sulle funzionalità incluse in questa applicazione prima di modificare qualsiasi valore! Ricorda, stai scegliendo TU di fare queste modifiche, e se ci punterai il dito contro accusandoci di aver rovinato il tuo dispositivo, ci farai solo fare due risate.\nAlu Team, Tester e Collaboratori\nalucard24, AntaresOne, smeroni68, Jimsilver73, franzyroy, Angelcalibur, -+BB+-</string>
     <string name="appver">Versione Applicazione: </string>
     <string name="appvernf">Versione applicazione non trovata!</string>
     <string name="back">Indietro</string>
@@ -58,4 +58,8 @@
     <string name="pref_animation_out_accept">"Animazione di Uscita tasto Salva"</string>
     <string name="pref_animation_out_description_decline">"Animazione utilizzata quando si preme Scarta"</string>
     <string name="pref_animation_out_decline">"Animazione di Uscita tasto Scarta"</string>
+    <string name="pref_description_theme">"Seleziona il tuo tema preferito"</string>
+    <string name="pref_theme">"Selezione tema"</string>
+    <string name="theme_change">"STweaks ora si riavvierà con il nuovo tema selezionato"</string>
+    <string name="contributors">"Alu Team, Tester e Collaboratori:\nalucard24, AntaresOne, smeroni68, Jimsilver73, franzyroy, Angelcalibur, -+BB+-"</string>
 </resources>

@@ -1,7 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppTheme" parent="android:Theme.Material.Light.DarkActionBar">
-      <item name="android:colorPrimary">@color/cmgray</item>
-      <item name="android:colorPrimaryDark">@color/cmdkgray</item>
+    <style name="LightTheme" parent="android:Theme.Material.Light.DarkActionBar">
+        <item name="android:colorPrimary">@color/cmgray</item>
+        <item name="android:colorPrimaryDark">@color/cmdkgray</item>
+        <item name="contentLayout">@style/content_layout_light</item>
+        <item name="controlLayout">@style/template_control_light</item>
+        <item name="panelDescLayout">@style/template_paneldesc_light</item>
+        <item name="panelNameLayout">@style/template_panelname_light</item>
+        <item name="seekbar">@style/template_seekbar_light</item>
+        <item name="seekbarText">@style/template_seekbar_text_light</item>
+        <item name="acceptDeclineLayout">@style/template_accept_decline_light</item>
+        <item name="spinnerLayout">@style/template_spinner_light</item>
+        <item name="spinnerItemLayout">@style/template_spinner_item_light</item>
+        <item name="switchLayout">@style/template_switch_light</item>
+        <item name="scrollviewLayout">@style/template_scrollview_light</item>
+        <item name="textDescLayout">@style/template_text_desc_light</item>
+        <item name="textNameLayout">@style/template_text_name_light</item>
+        <item name="viewpagerLayout">@style/template_viewpager_light</item>
+        <item name="panelSeparator">@style/template_panel_separator_light</item>
+    </style>
+    <style name="DarkTheme" parent="android:Theme.Material">
+        <item name="contentLayout">@style/content_layout_dark</item>
+        <item name="controlLayout">@style/template_control_dark</item>
+        <item name="panelDescLayout">@style/template_paneldesc_dark</item>
+        <item name="panelNameLayout">@style/template_panelname_dark</item>
+        <item name="seekbar">@style/template_seekbar_dark</item>
+        <item name="seekbarText">@style/template_seekbar_text_dark</item>
+        <item name="acceptDeclineLayout">@style/template_accept_decline_dark</item>
+        <item name="spinnerLayout">@style/template_spinner_dark</item>
+        <item name="spinnerItemLayout">@style/template_spinner_item_dark</item>
+        <item name="switchLayout">@style/template_switch_dark</item>
+        <item name="scrollviewLayout">@style/template_scrollview_dark</item>
+        <item name="textDescLayout">@style/template_text_desc_dark</item>
+        <item name="textNameLayout">@style/template_text_name_dark</item>
+        <item name="viewpagerLayout">@style/template_viewpager_dark</item>
+        <item name="panelSeparator">@style/template_panel_separator_dark</item>
+    </style>
+    <style name="SammyTheme" parent="android:Theme.Material.Light.DarkActionBar">
+        <item name="contentLayout">@style/content_layout_sammy</item>
+        <item name="controlLayout">@style/template_control_sammy</item>
+        <item name="panelDescLayout">@style/template_paneldesc_sammy</item>
+        <item name="panelNameLayout">@style/template_panelname_sammy</item>
+        <item name="seekbar">@style/template_seekbar_sammy</item>
+        <item name="seekbarText">@style/template_seekbar_text_sammy</item>
+        <item name="acceptDeclineLayout">@style/template_accept_decline_sammy</item>
+        <item name="spinnerLayout">@style/template_spinner_sammy</item>
+        <item name="spinnerItemLayout">@style/template_spinner_item_sammy</item>
+        <item name="switchLayout">@style/template_switch_sammy</item>
+        <item name="scrollviewLayout">@style/template_scrollview_sammy</item>
+        <item name="textDescLayout">@style/template_text_desc_sammy</item>
+        <item name="textNameLayout">@style/template_text_name_sammy</item>
+        <item name="viewpagerLayout">@style/template_viewpager_sammy</item>
+        <item name="panelSeparator">@style/template_panel_separator_sammy</item>
+        <item name="android:colorPrimary">@color/sammyltblue</item>
+        <item name="android:colorPrimaryDark">@color/sammyltblue</item>
+        <item name="android:colorAccent">@color/sammyyellow</item>
     </style>
 </resources>

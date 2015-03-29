@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- View styles -->
+    <attr name="contentLayout" format="reference|dimension"/>
+    <attr name="controlLayout" format="reference|dimension" />
+    <attr name="panelDescLayout" format="reference|dimension" />
+    <attr name="panelNameLayout" format="reference|dimension" />
+    <attr name="seekbar" format="dimension" />
+    <attr name="seekbarText" format="reference|dimension" />
+    <attr name="acceptDeclineLayout" format="reference|dimension" />
+    <attr name="spinnerLayout" format="reference|dimension" />
+    <attr name="spinnerItemLayout" format="reference|dimension" />
+    <attr name="switchLayout" format="reference|dimension" />
+    <attr name="scrollviewLayout" format="reference|dimension" />
+    <attr name="textDescLayout" format="reference|dimension" />
+    <attr name="textNameLayout" format="reference|dimension" />
+    <attr name="viewpagerLayout" format="reference|dimension" />
+    <attr name="panelSeparator" format="reference|dimension" />
+
+</resources>

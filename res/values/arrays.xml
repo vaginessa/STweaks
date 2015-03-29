@@ -4,7 +4,7 @@
         name="pref_launcher_icon_entries">
         <item>Material Icon</item>
         <item>Stock Icon</item>
-        <item>No Icon\n(!!CAUTION!!)</item>
+        <item>No Icon\n!!CAUTION!!</item>
     </string-array>
     <string-array
         name="pref_launcher_icon_values">
@@ -49,5 +49,18 @@
         <item>fadeout</item>
         <item>scaleout</item>
         <item>fadescaleout</item>
+    </string-array>
+
+    <string-array
+        name="pref_theme_entries">
+        <item>Light Theme</item>
+        <item>Dark Theme</item>
+        <item>Samsung Theme</item>
+    </string-array>
+    <string-array
+        name="pref_theme_values">
+        <item>light</item>
+        <item>dark</item>
+        <item>sammy</item>
     </string-array>
 </resources>
