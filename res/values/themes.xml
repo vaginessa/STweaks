@@ -48,6 +48,10 @@
         <item name="android:paddingEnd">50dp</item>
         <item name="android:paddingStart">50dp</item>
         <item name="android:paddingBottom">@dimen/size_medium</item>
+        <item name="android:progressDrawable">@drawable/seekbar_light</item>
+        <item name="android:minHeight">7dip</item>
+        <item name="android:maxHeight">7dip</item>
+        <item name="android:thumbOffset">11dip</item>
     </style>
     <style name="template_seekbar_text_light">
         <item name="android:layout_width">wrap_content</item>
@@ -187,6 +191,10 @@
         <item name="android:paddingEnd">50dp</item>
         <item name="android:paddingStart">50dp</item>
         <item name="android:paddingBottom">@dimen/size_medium</item>
+        <item name="android:progressDrawable">@drawable/seekbar_dark</item>
+        <item name="android:minHeight">7dip</item>
+        <item name="android:maxHeight">7dip</item>
+        <item name="android:thumbOffset">11dip</item>
     </style>
     <style name="template_seekbar_text_dark">
         <item name="android:layout_width">wrap_content</item>
@@ -325,6 +333,10 @@
         <item name="android:paddingEnd">50dp</item>
         <item name="android:paddingStart">50dp</item>
         <item name="android:paddingBottom">@dimen/size_medium</item>
+        <item name="android:progressDrawable">@drawable/seekbar_sammy</item>
+        <item name="android:minHeight">7dip</item>
+        <item name="android:maxHeight">7dip</item>
+        <item name="android:thumbOffset">11dip</item>
     </style>
     <style name="template_seekbar_text_sammy">
         <item name="android:layout_width">wrap_content</item>

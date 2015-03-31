@@ -11,4 +11,6 @@
     <color name="sammyltblue">#00a5c3</color>
     <color name="sammyyellow">#f8e57f</color>
     <color name="sammytext">#427882</color>
+    <color name="lightaccent">#009688</color>
+    <color name="darkaccent">#80cbc4</color>
 </resources>

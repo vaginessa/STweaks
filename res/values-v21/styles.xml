@@ -53,7 +53,7 @@
         <item name="viewpagerLayout">@style/template_viewpager_sammy</item>
         <item name="panelSeparator">@style/template_panel_separator_sammy</item>
         <item name="android:colorPrimary">@color/sammyltblue</item>
-        <item name="android:colorPrimaryDark">@color/sammyltblue</item>
+        <item name="android:colorPrimaryDark">@color/sammydkblue</item>
         <item name="android:colorAccent">@color/sammyyellow</item>
     </style>
 </resources>

@@ -28,7 +28,7 @@ public class STweaksSettingsActivity extends PreferenceActivity {
             addPreferencesFromResource(R.xml.stweaks_settings);
             getPreferenceScreen().getSharedPreferences()
                     .registerOnSharedPreferenceChangeListener(this);
-        }
+            }
 
         @Override
         public void onDestroy() {
@@ -53,10 +53,10 @@ public class STweaksSettingsActivity extends PreferenceActivity {
 
         @Override
         public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
+            final String icon = prefs.getString("pref_launcher_icon", "");
             // SharedPreferences.Editor editor = prefs.edit();
             switch (key) {
                 case "pref_launcher_icon":
-                    final String icon = prefs.getString("pref_launcher_icon", "");
                     switch (icon) {
                         case "material":
                             getActivity().getPackageManager().setComponentEnabledSetting(
@@ -116,9 +116,16 @@ public class STweaksSettingsActivity extends PreferenceActivity {
                             builder.setMessage(R.string.theme_change)
                                     .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int id) {
-                                            Intent restart = new Intent(getActivity(), MainActivity.class);
-                                            restart.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                            startActivity(restart);
+                                            if (icon.equals("noicon")) {
+                                                Intent restart = new Intent(getActivity(), MainActivity.class);
+                                                restart.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                startActivity(restart);
+                                            } else {
+                                                Intent restart = getActivity().getPackageManager()
+                                                        .getLaunchIntentForPackage( getActivity().getPackageName() );
+                                                restart.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                startActivity(restart);
+                                            }
                                         }
                                     })
                                     .setTitle(R.string.warning)
@@ -130,9 +137,16 @@ public class STweaksSettingsActivity extends PreferenceActivity {
                             builder1.setMessage(R.string.theme_change)
                                     .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int id) {
-                                            Intent restart = new Intent(getActivity(), MainActivity.class);
-                                            restart.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                            startActivity(restart);
+                                            if (icon.equals("noicon")) {
+                                                Intent restart = new Intent(getActivity(), MainActivity.class);
+                                                restart.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                startActivity(restart);
+                                            } else {
+                                                Intent restart = getActivity().getPackageManager()
+                                                        .getLaunchIntentForPackage( getActivity().getPackageName() );
+                                                restart.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                startActivity(restart);
+                                            }
                                         }
                                     })
                                     .setTitle(R.string.warning)
@@ -144,16 +158,23 @@ public class STweaksSettingsActivity extends PreferenceActivity {
                             builder2.setMessage(R.string.theme_change)
                                     .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int id) {
-                                            Intent restart = new Intent(getActivity(), MainActivity.class);
-                                            restart.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                            startActivity(restart);
+                                            if (icon.equals("noicon")) {
+                                                Intent restart = new Intent(getActivity(), MainActivity.class);
+                                                restart.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                startActivity(restart);
+                                            } else {
+                                                Intent restart = getActivity().getPackageManager()
+                                                        .getLaunchIntentForPackage( getActivity().getPackageName() );
+                                                restart.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                startActivity(restart);
+                                            }
                                         }
                                     })
                                     .setTitle(R.string.warning)
                                     .create()
                                     .show();
                             break;
-                    }
+                        }
                 break;
             }
         }
