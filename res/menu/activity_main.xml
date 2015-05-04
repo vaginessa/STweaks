@@ -7,14 +7,6 @@
         android:title="@string/select_profile"
         android:icon="@drawable/ic_select_profile"
         android:showAsAction="ifRoom"/>
-    <item android:id="@+id/menu_kernel_thread"
-        android:title="@string/kernel_thread"
-        android:orderInCategory="100"
-        android:showAsAction="never"  />
-    <item android:id="@+id/menu_donation"
-        android:title="@string/donation"
-        android:orderInCategory="110"
-        android:showAsAction="never"  />
     <item android:id="@+id/menu_kernel_bug"
         android:title="@string/kernel_bug"
         android:orderInCategory="120"

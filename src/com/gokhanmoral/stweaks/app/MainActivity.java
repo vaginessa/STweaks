@@ -465,15 +465,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         final Context mContext = this;
         switch (item.getItemId()) {
 
-            case R.id.menu_donation: {
-                Intent intent = new Intent();
-                intent.setAction(Intent.ACTION_VIEW);
-                intent.addCategory(Intent.CATEGORY_BROWSABLE);
-                intent.setData(Uri.parse("http://forum.xda-developers.com/donatetome.php?u=4899086"));
-                startActivity(intent);
-            }
-            return true;
-
             case R.id.select_profile: {
                 AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
                 View v = LayoutInflater.from(mContext).inflate(R.layout.profile_chooser, mViewPager, false);
@@ -488,15 +479,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                         .setIcon(R.drawable.ic_launcher)
                         .create()
                         .show();
-            }
-            return true;
-
-            case R.id.menu_kernel_thread: {
-                Intent intent = new Intent();
-                intent.setAction(Intent.ACTION_VIEW);
-                intent.addCategory(Intent.CATEGORY_BROWSABLE);
-                intent.setData(Uri.parse("http://forum.xda-developers.com/showthread.php?t=2590246"));
-                startActivity(intent);
             }
             return true;
 
