@@ -8,6 +8,14 @@
         android:label="@string/app_name"
         android:allowBackup="true"
         android:supportsRtl="true">
+        <receiver android:name="LogWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider"
+                android:resource="@xml/log_widget" />
+        </receiver>
+
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|screenSize"
