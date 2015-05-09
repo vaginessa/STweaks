@@ -62,4 +62,6 @@
     <string name="pref_theme">"Selezione tema"</string>
     <string name="theme_change">"STweaks ora si riavvierà con il nuovo tema selezionato"</string>
     <string name="pref_changelog">"Changelog completo nel mio GitHub"</string>
+    <string name="log_widget">"STweaks log widget"</string>
+    <string name="log_button">"Salva Log"</string>
 </resources>
