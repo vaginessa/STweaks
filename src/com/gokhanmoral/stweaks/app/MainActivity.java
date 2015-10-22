@@ -44,6 +44,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -62,6 +63,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	private Boolean kernelSupportOk = false;
 	private Boolean userInterfaceConfigSuccess = false;
 	private Boolean valueChanged = false;
+    private File configIta = new File("/res/customconfig/customconfig_it.xml");
 	private ProgressDialog dialog = null;
 	private String valuesChanged = "";
 
@@ -70,7 +72,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		Log.i(LOG_TAG, "Getting config xml from apk...");
 		Boolean isOk = false;
 		try 
-		{     		
+		{
 			InputStream is = getAssets().open("customconfig.xml");
 			isOk = parseUIFromXml(is);
 		} 
@@ -272,11 +274,16 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     	
 	private void getScriptValuesWithoutUiChange() 
 	{
+        Locale systemLanguage = this.getResources().getConfiguration().locale;
 		String exitInActions = Utils.executeRootCommandInThread("grep exit /res/customconfig/actions/*");
 		boolean optimized = false;
 		if(exitInActions == null || exitInActions.length() == 0)
         {
-			Utils.executeRootCommandInThread("source /res/customconfig/customconfig-helper");
+            if (systemLanguage.toString().equals("it_IT") && configIta.exists()) {
+                Utils.executeRootCommandInThread("source /res/customconfig/customconfig-helper it");
+            } else {
+                Utils.executeRootCommandInThread("source /res/customconfig/customconfig-helper");
+            }
 	        Utils.executeRootCommandInThread("read_defaults");
 	        Utils.executeRootCommandInThread("read_config");
 	        optimized = true;
