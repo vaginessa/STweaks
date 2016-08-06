@@ -54,7 +54,7 @@ abstract class SyhControl {
 			String command;
 			if(optimized)
 			{
-				command = "`echo " + action + "|awk '{print \". /res/customconfig/actions/\" $1,$1,$2,$3,$4,$5,$6,$7,$8}'`";
+				command = "`/sbin/bb/echo " + action + "|/sbin/bb/awk '{print \". /res/customconfig/actions/\" $1,$1,$2,$3,$4,$5,$6,$7,$8}'`";
 			}
 			else
 			{
