@@ -15,14 +15,6 @@
         android:title="@string/community"
         android:orderInCategory="110"
         android:showAsAction="never"  />
-    <item android:id="@+id/menu_kernel_bug"
-        android:title="@string/kernel_bug"
-        android:orderInCategory="120"
-        android:showAsAction="never"  />
-    <item android:id="@+id/menu_app_bug"
-        android:title="@string/app_bug"
-        android:orderInCategory="130"
-        android:showAsAction="never"  />
     <item android:id="@+id/menu_reset"
         android:title="@string/reset_settings"
         android:orderInCategory="150"

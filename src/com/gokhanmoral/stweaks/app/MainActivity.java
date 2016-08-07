@@ -539,26 +539,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                 .show();
 
             }
-                return true;
-            case R.id.menu_kernel_bug: {
-                Utils.executeRootCommandInThread("/res/customconfig/actions/push-actions/debug_to_sd + 1");
-                Toast toast = Toast.makeText(mContext, R.string.log_done, Toast.LENGTH_LONG);
-                toast.show();
-               }
-            return true;
-            case R.id.menu_app_bug: {
-                Utils.executeRootCommandInThread("/res/customconfig/actions/push-actions/debug_to_sd + 2");
-                Toast toast = Toast.makeText(mContext, R.string.logging, Toast.LENGTH_LONG);
-                toast.show();
-                Timer timer = new Timer();
-                timer.schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        System.exit(0);
-                    }
-
-                }, 31000);
-            }
             return true;
             case R.id.menu_reset: {
                 AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
