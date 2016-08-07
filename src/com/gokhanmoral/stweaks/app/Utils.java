@@ -180,7 +180,7 @@ class Utils {
 				}// while
 			}// if
 		} catch (IOException ex) {
-			Log.w(LOG_TAG + "executeRootCommandInThread",
+			Log.w(LOG_TAG + "execRootCommandInThread",
 					"Running command failed: " + command, ex);
 		}
 

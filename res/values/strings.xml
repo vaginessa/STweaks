@@ -7,7 +7,6 @@
     <string name="bottom_decline">Discard</string>
     <string name="startmenu_initial" translatable="false" />
     <string name="startmenu_nokernelsupport">Sorry, no kernel support!</string>
-    <string name="coming_soon">Coming soon!</string>
     <string name="reset_settings">Reset settings to default</string>
     <string name="developer_info" tools:ignore="TypographyDashes">Developed by Gokhan Moral\nUpdated by B--B</string>
     <string name="startmenu_no_root">No root access, or timeout!</string>

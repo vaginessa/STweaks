@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.Locale;
+
 abstract class SyhControl {
 	public String description = "";
 	public String name = "";
@@ -102,38 +104,12 @@ abstract class SyhControl {
 		
 		valueFromUser = valueFromScript; //prevent value changed event!!!
 
-        //Moved to xml
-		//controlLayout = new LinearLayout(context);
-		//controlLayout.setOrientation(LinearLayout.VERTICAL);
-		//controlLayout.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
-		//controlLayout.setPadding(30, 5, 30, 5);
-
         controlLayout = new LinearLayout(context);
         controlLayout = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.template_control_layout, controlLayout, false);
 
-        //DONE: Move this to xml
-		//Control name
-		//nameTextView = new TextView(context);
-		//-- nameTextView.setBackgroundColor(Color.BLACK);
-		//nameTextView.setTextColor(Color.BLACK);
-		//nameTextView.setText(name.toUpperCase());
-		//nameTextView.setTypeface(null, Typeface.BOLD);
-		//controlLayout.addView(nameTextView);
-		
-		//DONE: Move this to xml
-		//Control description
-		//descriptionTextView = new TextView(context);
-		//descriptionTextView.setPadding(15, 5, 0, 0);
-		//-- descriptionTextView.setBackgroundColor(Color.BLACK);
-		//descriptionTextView.setTextSize(nameTextView.getTextSize()*0.5f);
-		//descriptionTextView.setTypeface(Typeface.defaultFromStyle(Typeface.ITALIC), Typeface.ITALIC);
-		//descriptionTextView.setTextColor(Color.BLACK);
-		//descriptionTextView.setText(description);
-		//controlLayout.addView(descriptionTextView);
-
         //Control Name
         TextView nameTextView = (TextView) LayoutInflater.from(context).inflate(R.layout.template_textname, controlLayout, false);
-        nameTextView.setText(name.toUpperCase());
+        nameTextView.setText(name.toUpperCase(Locale.US));
         controlLayout.addView(nameTextView);
 
         //Control description
@@ -147,25 +123,6 @@ abstract class SyhControl {
         TextView panelSeparatorTextView = (TextView) LayoutInflater.from(context).inflate(R.layout.template_panel_separator, controlLayout, false);
         descriptionTextView.setText(description);
         controlLayout.addView(panelSeparatorTextView);
-
-        // Moved to xml
-        //TextView paneSeparatorBlank = new TextView(context);
-        //paneSeparatorBlank.setHeight(5);
-        //--paneSeparatorBlank.setBackgroundColor(Color.BLACK);
-        //paneSeparatorBlank.setText("");
-        //controlLayout.addView(paneSeparatorBlank);
-
-        //TextView paneSeparatorLine = new TextView(context);
-        //paneSeparatorLine.setHeight(2);
-        //paneSeparatorLine.setBackgroundColor(Color.DKGRAY);
-        //paneSeparatorLine.setText("");
-        //controlLayout.addView(paneSeparatorLine);
-
-        //TextView paneSeparatorBlankAfterLine = new TextView(context);
-        //paneSeparatorBlankAfterLine.setHeight(10);
-        //--paneSeparatorBlank.setBackgroundColor(Color.BLACK);
-        //paneSeparatorBlankAfterLine.setText("");
-        //controlLayout.addView(paneSeparatorBlankAfterLine);
 
 		view = controlLayout;
 	}

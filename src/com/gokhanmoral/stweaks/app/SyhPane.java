@@ -2,6 +2,7 @@ package com.gokhanmoral.stweaks.app;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -17,7 +18,7 @@ class SyhPane {
 	public void addPaneToUI(Activity activity, LinearLayout layout)
 	{
 		TextView paneNameView = (TextView)LayoutInflater.from(activity).inflate(R.layout.template_panelname, layout, false);
-		paneNameView.setText(this.name.toUpperCase());
+		paneNameView.setText(this.name.toUpperCase(Locale.US));
 		layout.addView(paneNameView); 
         
 		if ((this.description != null) && (!this.description.equals("")))
