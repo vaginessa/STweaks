@@ -495,7 +495,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_VIEW);
                 intent.addCategory(Intent.CATEGORY_BROWSABLE);
-                intent.setData(Uri.parse("http://forum.xda-developers.com/galaxy-s4/i9505-orig-develop/jdcteam-android-source-project-mra58v-t3251663"));
+                intent.setData(Uri.parse("http://forum.xda-developers.com/galaxy-s4/i9505-orig-develop/jdcteam-optimized-cyanogenmod-13-0-t3334475"));
                 startActivity(intent);
             }
             return true;
