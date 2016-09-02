@@ -23,7 +23,7 @@ class Utils {
 
     private static void initializeUtils() {
         try {
-            rootProcess = Runtime.getRuntime().exec("/system/xbin/su"); // get
+            rootProcess = Runtime.getRuntime().exec("/su/bin/su"); // get
             // the
             // root
             // access
