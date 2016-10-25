@@ -845,7 +845,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     }
 
     public void profileCheck(View view) {
-        Toast toast = Toast.makeText(getApplicationContext(), getResources().getText(R.string.yourprofile) + Utils.executeRootCommandInThread("cat /data/.alucard/.active.profile"), Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(getApplicationContext(), getResources().getText(R.string.yourprofile) + Utils.executeRootCommandInThread("cat /data/.b--b/.active.profile"), Toast.LENGTH_SHORT);
         toast.show();
     }
 
@@ -963,11 +963,11 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         switch (theme)
         {
             default:
+	   case "dark":
+                activity.setTheme(R.style.DarkTheme);
+                break;
             case "light":
                 activity.setTheme(R.style.LightTheme);
-                break;
-            case "dark":
-                activity.setTheme(R.style.DarkTheme);
                 break;
             case "sammy":
                 activity.setTheme(R.style.SammyTheme);
