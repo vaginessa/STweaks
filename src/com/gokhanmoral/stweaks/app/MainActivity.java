@@ -962,7 +962,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         String theme = prefs.getString("pref_theme", "");
         switch (theme)
         {
-            default:
+	   default:
+		activity.setTheme(R.style.SammyTheme);
+                break;
 	   case "dark":
                 activity.setTheme(R.style.DarkTheme);
                 break;
