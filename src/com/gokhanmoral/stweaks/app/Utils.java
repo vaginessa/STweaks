@@ -23,7 +23,7 @@ class Utils {
 
     private static void initializeUtils() {
         try {
-            rootProcess = Runtime.getRuntime().exec("/su/bin/su"); // get
+            rootProcess = Runtime.getRuntime().exec(getSuPath()); // get
             // the
             // root
             // access
@@ -40,6 +40,19 @@ class Utils {
             consoleError = null;
             e.printStackTrace();
         }
+    }
+
+    /*
+     * Returns the location of SU binary.
+     * @return path
+     */
+    private static String getSuPath() throws IOException {
+        String suPath = new BufferedReader(new InputStreamReader(Runtime.getRuntime().exec("which su").getInputStream())).readLine();
+        if (suPath != null && !suPath.equals("")) {
+            return suPath;
+        }
+        // Return the default location for systemless SU if suPath is empty.
+        return "/su/bin/su";
     }
 
     private static Boolean isUtilsInitilized() {
